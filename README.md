@@ -1,10 +1,16 @@
 An Obsidian theme offers a clean and clutter-free interface for enhanced focus and productivity.
 
-![[Qlean.png]]
+![Qlean](assets/Qlean.png)
 
 ---
 
 ## Screenshots
+
+![Qlean-Light](assets/Qlean-light.png)
+
+![Qlean-Dark](assets/Qlean-dark.png)
+
+![Qlean-Zen](assets/Qlean-zen.png)
 
 ## Features
 
