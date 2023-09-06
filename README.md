@@ -4,6 +4,19 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ---
 
+## Updates
+
+### Version 0.1.1
+
+#### change
+
+1. Background color of active file in file tree is no longer dark(changed to accent color);
+2. Selected text color now works as accent color;
+
+#### bug fix
+
+1. Left-top corner color correctly works in Zen mode;
+
 ## Screenshots
 
 ![Qlean-Light](assets/Qlean-light.png)
