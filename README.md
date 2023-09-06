@@ -6,16 +6,23 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ## Updates
 
-### Version 0.1.1
+### Version 0.1.2(9/7/2023)
 
 #### change
 
-1. Background color of active file in file tree is no longer dark(changed to accent color);
-2. Selected text color now works as accent color;
+1. Remove sidebar and topbar borders in Zen.
+2. Pictures now has their alt displayed. Position options will be released soon.
+
+### Version 0.1.1(9/6/2023)
+
+#### change
+
+1. Background color of active file in file tree is no longer dark(changed to accent color).
+2. Selected text color now works as accent color.
 
 #### bug fix
 
-1. Left-top corner color correctly works in Zen mode;
+1. Left-top corner color correctly works in Zen mode.
 
 ## Screenshots
 
