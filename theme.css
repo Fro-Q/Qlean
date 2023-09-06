@@ -114,6 +114,7 @@ body {
   --color-gradient-h4: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 9%));
   --color-gradient-h5: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 12%));
   --color-gradient-h6: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 15%));
+  --text-selection: hsla(var(--color-h), var(--color-s), var(--color-l), 0.3);
   --h1-color: var(--color-default-h1);
   --h2-color: var(--color-default-h2);
   --h3-color: var(--color-default-h3);
@@ -1026,7 +1027,7 @@ body.indicate-child .workspace .mod-left-split .nav-folder-title:not(.is-acitve,
 }
 
 body.color-active-file .workspace .mod-left-split .nav-file-title.is-active {
-  background-color: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%));
+  background-color: hsl(var(--color-h), var(--color-s), var(--color-l));
   color: var(--text-strong);
   opacity: 1;
 }
@@ -1387,10 +1388,11 @@ body.zen-mode .side-dock-ribbon.is-collapsed {
 body.zen-mode .side-dock-ribbon.is-collapsed:hover {
   opacity: 1;
 }
+body.zen-mode.is-focused .workspace-ribbon.mod-left:before {
+  background-color: var(--background-secondary);
+}
 body.zen-mode .workspace-ribbon.mod-left:before {
   background-color: var(--background-primary);
-  border-bottom: none;
-  border-right: 1px solid var(--background-modifier-border);
 }
 body.zen-mode :is(.mod-root .workspace-tab-header-container, .view-header) {
   transition: all 0.3s ease-in-out;
