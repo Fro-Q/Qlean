@@ -6,6 +6,16 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ## Updates
 
+### Version 0.1.3(9/14/2023)
+
+#### change
+
+1. Tags in "Property" looks the same as that out of "Property";
+
+#### bug fix
+
+1. Mermaid graphs are now correctly displayed;
+
 ### Version 0.1.2(9/7/2023)
 
 #### change
