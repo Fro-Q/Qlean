@@ -1,6 +1,6 @@
 body {
-  --font-default: "Optima", "Hiragino Sans GB", sans-serif;
-  --font-monospace-default: monaco, Consolas, "Lucida Console", monospace;
+  --font-default: "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif;
+  --font-monospace-default: iawriter-mono, Nitti, Menlo, Courier, monospace;
   --font-monospace: var(--font-monospace-default);
   --font-header: var(--font-default);
   --font-text: var(--font-default);
@@ -84,6 +84,12 @@ body {
   --checklist-decoration-color: var(--text-normal);
   --checklist-done-decoration-color: var(--text-muted);
   --checklist-delete-decoration-color: var(--background-modifier-error);
+  --accent-color-light-hue-default: 254;
+  --accent-color-light-saturation-default: 80%;
+  --accent-color-light-lightness-default: 68%;
+  --accent-color-dark-hue-default: 254;
+  --accent-color-dark-saturation-default: 80%;
+  --accent-color-dark-lightness-default: 68%;
   --color-main: hsl(var(--color-h), var(--color-s), var(--color-l));
   --color-accent: var(--color-main) !important;
   --color-accent-1: var(--color-main) !important;
@@ -115,7 +121,6 @@ body {
   --color-gradient-h5: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 12%));
   --color-gradient-h6: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 15%));
   --text-selection: hsla(var(--color-h), var(--color-s), var(--color-l), 0.3) !important;
-  --interactive-accent-hover: hsla(var(--color-h), var(--color-s), var(--color-l), 0.6);
   --h1-color: var(--color-default-h1);
   --h2-color: var(--color-default-h2);
   --h3-color: var(--color-default-h3);
@@ -176,24 +181,6 @@ body {
   --inactive-opacity: 0.3;
   --inactive-hover-opacity: 0.8;
   --focuse-transition-duration: 0.2s;
-}
-body.custom-accent-color {
-  --accent-color-light-hue-default: 254;
-  --accent-color-light-saturation-default: 80%;
-  --accent-color-light-lightness-default: 68%;
-  --accent-color-dark-hue-default: 254;
-  --accent-color-dark-saturation-default: 80%;
-  --accent-color-dark-lightness-default: 68%;
-}
-body.custom-accent-color.theme-light {
-  --color-h: var(--accent-color-light-hue-default);
-  --color-s: var(--accent-color-light-saturation-default);
-  --color-l: var(--accent-color-light-lightness-default);
-}
-body.custom-accent-color.theme-dark {
-  --color-h: var(--accent-color-dark-hue-default);
-  --color-s: var(--accent-color-dark-saturation-default);
-  --color-l: var(--accent-color-dark-lightness-default);
 }
 body.theme-light {
   color-scheme: light;
@@ -357,6 +344,7 @@ body.colorful-headers.header-color-gradient {
   font-size: var(--font-h1-size) !important;
   font-weight: var(--font-h1-weight);
   color: var(--h1-color);
+  padding: 0;
 }
 
 .markdown-preview-view h2,
@@ -365,6 +353,7 @@ body.colorful-headers.header-color-gradient {
   font-size: var(--font-h2-size) !important;
   font-weight: var(--font-h2-weight);
   color: var(--h2-color);
+  padding: 0;
 }
 
 .markdown-preview-view h3,
@@ -373,6 +362,7 @@ body.colorful-headers.header-color-gradient {
   font-size: var(--font-h3-size) !important;
   font-weight: var(--font-h3-weight);
   color: var(--h3-color);
+  padding: 0;
 }
 
 .markdown-preview-view h4,
@@ -381,6 +371,7 @@ body.colorful-headers.header-color-gradient {
   font-size: var(--font-h4-size) !important;
   font-weight: var(--font-h4-weight);
   color: var(--h4-color);
+  padding: 0;
 }
 
 .markdown-preview-view h5,
@@ -389,6 +380,7 @@ body.colorful-headers.header-color-gradient {
   font-size: var(--font-h5-size) !important;
   font-weight: var(--font-h5-weight);
   color: var(--h5-color);
+  padding: 0;
 }
 
 .markdown-preview-view h6,
@@ -397,6 +389,7 @@ body.colorful-headers.header-color-gradient {
   font-size: var(--font-h6-size) !important;
   font-weight: var(--font-h6-weight);
   color: var(--h6-color);
+  padding: 0;
 }
 
 .markdown-preview-view :is(h1, h2, h3, h4, h5, h6):before,
@@ -705,7 +698,7 @@ body.callout-dogs-ear :is(.markdown-preview-view, .is-live-preview) .callout:hov
   top: 5px;
   right: auto;
   bottom: auto;
-  left: -8.1em;
+  left: -7.35em;
   content: attr(class);
   letter-spacing: 0.4em;
 }
@@ -757,20 +750,8 @@ body.callout-dogs-ear :is(.markdown-preview-view, .is-live-preview) .callout:hov
   border-radius: 0 0 4px 4px;
 }
 
-:is(.markdown-preview-view, .is-live-preview) .mermaid {
-  border-width: 2px;
-  border-style: solid;
-  border-color: var(--divider-color);
-  border-radius: 4px;
-  overflow-x: auto;
-}
-:is(.markdown-preview-view, .is-live-preview) .mermaid > svg {
-  display: block;
-}
-
 .markdown-preview-view a.tag,
-.is-live-preview .cm-line .cm-hashtag,
-.metadata-property[data-property-key=tags] .multi-select-pill {
+.is-live-preview .cm-line .cm-hashtag {
   font-family: var(--font-tag);
   font-size: var(--font-tag-size);
   font-weight: var(--font-tag-weight);
@@ -787,27 +768,27 @@ body.callout-dogs-ear :is(.markdown-preview-view, .is-live-preview) .callout:hov
   border-radius: var(--tag-radius) 0 0 var(--tag-radius);
 }
 
-body.tag-fill .markdown-preview-view a.tag:hover, body.tag-fill .metadata-property[data-property-key=tags] .multi-select-pill:hover {
+body.tag-fill .markdown-preview-view a.tag:hover {
   border-color: var(--color-accent-o80);
   background-color: var(--color-accent-o60);
   color: var(--text-strong);
   box-shadow: inset 1px 1px 3px 1px var(--switch-inset-shadow-color);
   text-shadow: 2px 2px 0 var(--switch-inset-shadow-color);
 }
-body.tag-fill .is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end), body.tag-fill .markdown-preview-view a.tag, body.tag-fill .metadata-property[data-property-key=tags] .multi-select-pill {
+body.tag-fill .is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end), body.tag-fill .markdown-preview-view a.tag {
   border-color: var(--color-accent-o40);
   background-color: var(--color-accent-o30);
   color: var(--text-normal);
 }
 
-body.tag-outline .markdown-preview-view a.tag:hover, body.tag-outline .metadata-property[data-property-key=tags] .multi-select-pill:hover {
+body.tag-outline .markdown-preview-view a.tag:hover {
   border-color: var(--color-accent-o80);
   background-color: var(--color-accent-o30);
   color: var(--text-normal);
   box-shadow: inset 1px 1px 3px 1px var(--switch-inset-shadow-color);
   text-shadow: 2px 2px 0 var(--switch-inset-shadow-color);
 }
-body.tag-outline .is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end), body.tag-outline .markdown-preview-view a.tag, body.tag-outline .metadata-property[data-property-key=tags] .multi-select-pill {
+body.tag-outline .is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end), body.tag-outline .markdown-preview-view a.tag {
   border-color: var(--color-accent-o50);
   background-color: transparent;
   color: var(--text-normal);
@@ -994,7 +975,6 @@ body.file-tree-icons .nav-file-title[data-path$=".md"] .nav-file-title-content:b
   mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
 }
 body.file-tree-icons .nav-file-title[data-path$=".pdf"] .nav-file-title-content:before {
-  content: "";
   position: relative;
   top: 0.15em;
   left: -0.3em;
@@ -1006,7 +986,6 @@ body.file-tree-icons .nav-file-title[data-path$=".pdf"] .nav-file-title-content:
   mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm12 6V9c0-.55-.45-1-1-1h-2v5h2c.55 0 1-.45 1-1zm-2-3h1v3h-1V9zm4 2h1v-1h-1V9h1V8h-2v5h1zm-8 0h1c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1H9v5h1v-2zm0-2h1v1h-1V9z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
 }
 body.file-tree-icons .nav-file-title:is([data-path$=".jpeg"], [data-path$=".jpg"], [data-path$=".png"]) .nav-file-title-content:before {
-  content: "";
   position: relative;
   top: 0.15em;
   left: -0.3em;
@@ -1018,7 +997,6 @@ body.file-tree-icons .nav-file-title:is([data-path$=".jpeg"], [data-path$=".jpg"
   mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
 }
 body.file-tree-icons .nav-file-title[data-path$=".mp3"] .nav-file-title-content:before {
-  content: "";
   position: relative;
   top: 0.15em;
   left: -0.3em;
@@ -1028,7 +1006,6 @@ body.file-tree-icons .nav-file-title[data-path$=".mp3"] .nav-file-title-content:
   mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
 }
 body.file-tree-icons .nav-file-title[data-path$=".mp4"] .nav-file-title-content:before {
-  content: "";
   position: relative;
   top: 0.15em;
   left: -0.3em;
@@ -1056,7 +1033,10 @@ body.indicate-child .workspace .mod-left-split .nav-folder-title:not(.is-acitve,
 }
 
 body.color-active-file .workspace .mod-left-split .nav-file-title.is-active {
-  background-color: hsl(var(--color-h), var(--color-s), var(--color-l));
+  border-width: 3px;
+  border-style: solid;
+  border-color: hsl(var(--color-h), var(--color-s), var(--color-l));
+  border-radius: var(--radius-s);
   color: var(--text-strong);
   opacity: 1;
 }
@@ -1556,7 +1536,7 @@ settings:
     level: 1
     collapsed: true
   -
-    id: custom-accent-color-light-hue
+    id: accent-color-light-hue-default
     title: Hue
     description: Hover to preview.
     type: variable-number-slider
@@ -1565,7 +1545,7 @@ settings:
     step: 1
     default: 254
   -
-    id: custom-accent-color-light-saturation
+    id: accent-color-light-saturation-default
     title: Saturation(%)
     type: variable-number-slider
     format: "%"
@@ -1574,7 +1554,7 @@ settings:
     step: 1
     default: 80
   -
-    id: custom-accent-color-light-lightness
+    id: accent-color-light-lightness-default
     title: Lightness(%)
     type: variable-number-slider
     format: "%"
@@ -1589,7 +1569,7 @@ settings:
     level: 1
     collapsed: true
   -
-    id: custom-accent-color-dark-hue
+    id: accent-color-dark-hue-default
     title: Hue
     description: Hover to preview.
     type: variable-number-slider
@@ -1598,7 +1578,7 @@ settings:
     step: 1
     default: 254
   -
-    id: custom-accent-color-dark-saturation
+    id: accent-color-dark-saturation-default
     title: Saturation(%)
     type: variable-number-slider
     format: "%"
@@ -1607,7 +1587,7 @@ settings:
     step: 1
     default: 80
   -
-    id: custom-accent-color-dark-lightness
+    id: accent-color-dark-lightness-default
     title: Lightness(%)
     type: variable-number-slider
     format: "%"
@@ -1629,22 +1609,23 @@ settings:
     level: 1
     collapsed: true
   -
-    id: font-p
+    id: font-text
     title: Text Font
     type: variable-text
-    default: '"Optima", "Hiragino Sans GB", sans-serif'
+    default: '"Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif'
     allowEmpty: true
   -
-    id: font-heading
-    title: Heading Font
+    id: font-header
+    title: Header Font
+    description: Will be text font if empty.
     type: variable-text
-    default: '"Optima", "Hiragino Sans GB", sans-serif'
+    default: ''
     allowEmpty: true
   -
     id: font-monospace
     title: Monospace Font
     type: variable-text
-    default: 'monaco, Consolas, "Lucida Console", monospace'
+    default: 'iawriter-mono, Nitti, Menlo, Courier, monospace'
     allowEmpty: true
   -
     id: font-interface-override
@@ -1655,9 +1636,11 @@ settings:
     allowEmpty: true
   -
     id: font-source-view
-    title: Font
+    title: Source View Font
+    description: Will be monospace font if empty.
     type: variable-text
-    default: 'monaco, Consolas, "Lucida Console", monospace'
+    default: ''
+    allowEmpty: true
   -
     id: strong-style
     title: Strong Style
@@ -2089,12 +2072,6 @@ settings:
     type: heading
     level: 1
     collapsed: true
-  -
-    id: font-header
-    title: Header Font
-    type: variable-text
-    default: '"Optima", "Hiragino Sans GB", sans-serif'
-    allowEmpty: true
   -
     id: header-indicator
     title: Header Indicator

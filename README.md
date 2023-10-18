@@ -6,22 +6,39 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ## Updates
 
+### Version 0.1.4(10/19/2023)
+
+#### change
+
+1. Border instead of background to indicate the active file in file tree.
+2. Changed default font value.
+
+#### bug fix
+
+1. Deeply apologise for the unworking font & accent color change button. Now custom accent color and custom font both work fine.
+
+---
+
 ### Version 0.1.3(9/14/2023)
 
 #### change
 
-1. Tags in "Property" looks the same as that out of "Property";
+1. Tags in "Property" looks the same as that out of “Property".
 
 #### bug fix
 
-1. Mermaid graphs are now correctly displayed;
+1. Mermaid graphs are now correctly displayed.
+
+---
 
 ### Version 0.1.2(9/7/2023)
 
 #### change
 
-1. Remove sidebar and topbar borders in Zen.
-2. Pictures now has their alt displayed. Position options will be released soon.
+1. Removed sidebar and topbar borders in Zen.
+2. Pictures now have their alts displayed. Position options will be released soon.
+
+---
 
 ### Version 0.1.1(9/6/2023)
 
@@ -33,6 +50,8 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 #### bug fix
 
 1. Left-top corner color correctly works in Zen mode.
+
+---
 
 ## Screenshots
 
