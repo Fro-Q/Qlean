@@ -6,6 +6,21 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ## Updates
 
+---
+
+### Version 0.1.5(10/20/2023)
+
+#### new
+
+1. All embeds have their alts displayed and position options are available.
+
+#### bug fix
+
+1. Icons of some other types of files are now correctly displayed.
+2. Fixed the bug in 0.1.4 that the Hue Slider preview is not displayed.
+
+---
+
 ### Version 0.1.4(10/19/2023)
 
 #### change
@@ -33,10 +48,14 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ### Version 0.1.2(9/7/2023)
 
+#### new
+
+1. Pictures now have their alts displayed. Position options will be released soon.
+
+
 #### change
 
 1. Removed sidebar and topbar borders in Zen.
-2. Pictures now have their alts displayed. Position options will be released soon.
 
 ---
 
