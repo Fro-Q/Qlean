@@ -259,8 +259,8 @@ body.theme-dark {
   --codebloc-border-color: #888;
   --background-primary: #232222;
   --background-secondary: #171514;
-  --background-modifier-active-hover: #404040;
-  --background-modifier-border-focus: #404040;
+  --background-modifier-active-hover: #272727;
+  --background-modifier-border-focus: #272727;
   --background-modifier-border-focus: var(--color-base-40);
   --button-shadow-color: rgba(255, 255, 255, 0.2);
   --titlebar-isfocused: #171514;
@@ -268,7 +268,7 @@ body.theme-dark {
   --divider-color: #303030;
   --tab-bg-color: #303030;
   --tab-hover-bg-color: var(--background-modifier-active-hover);
-  --tab-active-bg-color: #505050;
+  --tab-active-bg-color: #303030;
   --close-button-hover-bg-color: rgba(255, 255, 255, 0.1);
   --switch-inset-shadow-color: rgba(0, 0, 0, 0.2);
 }
@@ -742,7 +742,8 @@ body.embed-alt.embed-alt-middle :is(.is-live-preview, .markdown-preview-view) .m
 }
 
 .markdown-preview-view a.tag,
-.is-live-preview .cm-line .cm-hashtag {
+.is-live-preview .cm-line .cm-hashtag,
+.metadata-container .metadata-property[data-property-key=tags] .multi-select-pill {
   font-family: var(--font-tag);
   font-size: var(--font-tag-size);
   font-weight: var(--font-tag-weight);
@@ -751,19 +752,20 @@ body.embed-alt.embed-alt-middle :is(.is-live-preview, .markdown-preview-view) .m
   border-width: 2px;
 }
 
-.is-live-preview .cm-line .cm-hashtag.cm-hashtag-end {
-  border-radius: 0 var(--tag-radius) var(--tag-radius) 0;
-}
-.is-live-preview .cm-line .cm-hashtag.cm-hashtag-begin {
+.metadata-container .metadata-property[data-property-key=tags] .metadata-property-value .multi-select-pill-content, .is-live-preview .cm-line .cm-hashtag.cm-hashtag-begin {
   border-radius: var(--tag-radius) 0 0 var(--tag-radius);
 }
 
-body.tag-fill .markdown-preview-view a.tag {
+.metadata-container .metadata-property[data-property-key=tags] .metadata-property-value .multi-select-pill-remove-button, .is-live-preview .cm-line .cm-hashtag.cm-hashtag-end {
+  border-radius: 0 var(--tag-radius) var(--tag-radius) 0;
+}
+
+body.tag-fill .markdown-preview-view a.tag, body.tag-fill .metadata-container .metadata-property[data-property-key=tags] .multi-select-pill {
   border-color: var(--color-accent-o40);
   background-color: var(--color-accent-o30);
   color: var(--text-normal);
 }
-body.tag-fill .markdown-preview-view a.tag:hover {
+body.tag-fill .markdown-preview-view a.tag:hover, body.tag-fill .metadata-container .metadata-property[data-property-key=tags] .multi-select-pill:hover {
   border-color: var(--color-accent-o80);
   background-color: var(--color-accent-o60);
   color: var(--text-strong);
@@ -776,12 +778,12 @@ body.tag-fill .is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-ha
   color: var(--text-normal);
 }
 
-body.tag-outline .markdown-preview-view a.tag {
+body.tag-outline .markdown-preview-view a.tag, body.tag-outline .metadata-container .metadata-property[data-property-key=tags] .multi-select-pill {
   border-color: var(--color-accent-o50);
   background-color: transparent;
   color: var(--text-normal);
 }
-body.tag-outline .markdown-preview-view a.tag:hover {
+body.tag-outline .markdown-preview-view a.tag:hover, body.tag-outline .metadata-container .metadata-property[data-property-key=tags] .multi-select-pill:hover {
   border-color: var(--color-accent-o80);
   background-color: var(--color-accent-o30);
   color: var(--text-normal);
@@ -801,13 +803,9 @@ body.tag-outline .is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm
   background-color: var(--background-primary);
 }
 
-body.is-focused.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right {
-  background-color: var(--titlebar-isfocused);
+.workspace.is-left-sidedock-open .side-dock-ribbon.mod-left {
+  background-color: var(--background-primary);
 }
-body.is-focused .workspace-tab.mod-top, body.is-focused .workspace-tab-header-container, body.is-focused .workspace-ribbon.mod-left:before {
-  background-color: var(--titlebar-isfocused);
-}
-
 .workspace :is(.mod-left-split, .mod-right-split) .workspace-tabs .workspace-tab-header-container-inner .workspace-tab-header {
   min-width: 30px;
 }
@@ -820,7 +818,6 @@ body.is-focused .workspace-tab.mod-top, body.is-focused .workspace-tab-header-co
   border-style: solid;
   border-color: transparent;
   border-radius: 4px;
-  background-color: var(--titlebar-isfocused);
   min-width: 50px;
   height: 30px;
   margin: 3.2px 5px 0 0;
@@ -1030,7 +1027,7 @@ body.indicate-child .workspace .mod-left-split .nav-folder-title:not(.is-acitve,
   border-radius: var(--radius-s);
 }
 
-body.color-active-file .workspace .mod-left-split .nav-file-title.is-active {
+body.active-file-border .workspace .mod-left-split .nav-file-title.is-active {
   border-width: 3px;
   border-style: solid;
   border-color: hsl(var(--color-h), var(--color-s), var(--color-l));
@@ -1385,12 +1382,12 @@ body.fade-out-inactive-lines .cm-line.cm-active {
   color: rgb(21, 47, 101);
 }
 
-body.zen-mode.side-dock-ribbon.is-collapsed {
+body.zen-mode .side-dock-ribbon.is-collapsed {
   border-right: none;
   transition: all 0.3s ease-in-out;
   transform: translateX(-40px);
 }
-body.zen-mode.side-dock-ribbon.is-collapsed:hover {
+body.zen-mode .side-dock-ribbon.is-collapsed:hover {
   transform: translateX(0);
 }
 body.zen-mode .workspace-ribbon.is-collapsed.mod-left:before {
@@ -2225,8 +2222,8 @@ settings:
     type: class-toggle
     default: true
   -
-    id: color-active-file
-    title: Active File Coloring
+    id: active-file-border
+    title: Active File Border
     type: class-toggle
     default: true
   -

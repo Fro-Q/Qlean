@@ -2,11 +2,19 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 ![Qlean](assets/Qlean.png)
 
----
-
 ## Updates
 
----
+### Version 0.1.6(12/22/2023)
+
+#### bug fix
+
+1. Side dock correctly hide in Zen mode.
+2. "tags" in "property" work the same as inline `#tag`(apologize for bringing this bug back after fixing it in 0.1.3).
+
+#### change
+
+1. Ative tab color in dark mode is no longer dazzling.
+2. Side dock color now is the same as main content area color.
 
 ### Version 0.1.5(10/20/2023)
 
@@ -70,7 +78,6 @@ An Obsidian theme offers a clean and clutter-free interface for enhanced focus a
 
 1. Left-top corner color correctly works in Zen mode.
 
----
 
 ## Screenshots
 
