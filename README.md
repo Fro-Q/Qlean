@@ -79,6 +79,10 @@ GitHub: [@Fro-Q](https://github.com/Fro-Q)
 
 Also, you can visit my [blog](https://fro-blo.com/) to see more about me. (Currently, blogs are written in only Chinese.)
 
+Your sponsorship can help me sustain my projects more actively. Consider Sponsoring me on [爱发电](https://afdian.net/a/fro-q) or Alipay.
+
+![Alipay QR code](alipay_qrcode.png)
+
 ## License
 
 This theme is licensed under the MIT License.
