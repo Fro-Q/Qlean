@@ -768,6 +768,11 @@ body.callout-dogs-ear :is(.markdown-rendered, .style-settings-container, .markdo
   margin-top: 0;
 }
 
+:is(.markdown-source-view.is-live-preview, .markdown-rendered, .style-settings-container) .mermaid {
+  background-color: var(--background-primary);
+  overflow-x: auto;
+}
+
 body.embed-alt :is(.markdown-source-view.is-live-preview, .markdown-rendered, .style-settings-container) .media-embed:after {
   content: attr(alt);
   font-family: var(--font-default);

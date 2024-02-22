@@ -5,6 +5,8 @@ No Intro.
 
 ![Qlean](assets/Qlean.png)
 
+For full changelog, please visit <https://github.com/Fro-Q/Qlean/blob/main/changelog/changelog.md>.
+
 ## Features
 
 > [!hint]
