@@ -1,3 +1,11 @@
+## Version 1.0.2(11/04/2024)
+
+### new & change
+
+1. Added new option "Enable Alternative Checkboxes" in "Checkbox" section to toggle the checkbox style offered by this theme. If you have your own checkbox style implemented by CSS snippet, disable this option in order to avoid conflicts.
+
+> Thank to [@damiankorcz](https://github.com/damiankorcz) for the implementation. Read more about this initiative in this repo: [Alternative-Checkboxes-Reference-Set](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set).
+
 ## Version 1.0.1(02/22/2024)
 
 ### bug fix

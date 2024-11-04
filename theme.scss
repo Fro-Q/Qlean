@@ -1,0 +1,3369 @@
+@mixin font($font-family: var(--font-text), $font-size: 1em, $font-weight: normal, $color: var(--text-normal)) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+}
+
+@mixin border($border-width: 1px, $border-style: solid, $border-color: var(--divider-color), $border-radius: 0) {
+  border-width: $border-width;
+  border-style: $border-style;
+  border-color: $border-color;
+  border-radius: $border-radius;
+}
+
+@mixin copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  appearance: none;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background-color: var(--code-bg-color);
+  transition: all 0.2s ease;
+  z-index: 1;
+
+  &:hover {
+    background-color: var(--code-bg-color);
+    border-color: var(--border-color);
+  }
+}
+
+@mixin scroll-bar($direction: y) {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    appearance: none;
+    transition: all 0.2s ease;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--text-muted);
+    transition: all 0.2s ease;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {}
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-normal);
+  }
+}
+
+$languages: "markup",
+  "html",
+  "xml",
+  "svg",
+  "mathml",
+  "ssml",
+  "atom",
+  "rss",
+  "css",
+  "like",
+  "javascript",
+  "js",
+  "abap",
+  "abnf",
+  "actionscript",
+  "ada",
+  "agda",
+  "al",
+  "antlr4",
+  "g4",
+  "apacheconf",
+  "apex",
+  "apl",
+  "applescript",
+  "aql",
+  "arduino",
+  "ino",
+  "arff",
+  "armasm",
+  "arm-asm",
+  "arturo",
+  "art",
+  "asciidoc",
+  "adoc",
+  "aspnet",
+  "asm6502",
+  "asmatmel",
+  "autohotkey",
+  "autoit",
+  "avisynth",
+  "avs",
+  "avro-idl",
+  "avdl",
+  "awk",
+  "gawk",
+  "bash",
+  "sh",
+  "shell",
+  "basic",
+  "batch",
+  "bbcode",
+  "shortcode",
+  "bbj",
+  "bicep",
+  "birb",
+  "bison",
+  "bnf",
+  "rbnf",
+  "bqn",
+  "brainfuck",
+  "brightscript",
+  "bro",
+  "bsl",
+  "oscript",
+  "c",
+  "csharp",
+  "cs",
+  "dotnet",
+  "cpp",
+  "cfscript",
+  "cfc",
+  "chaiscript",
+  "cil",
+  "cilkc",
+  "cilk-c",
+  "cilkcpp",
+  "cilk",
+  "clojure",
+  "cmake",
+  "cobol",
+  "coffeescript",
+  "coffee",
+  "concurnas",
+  "conc",
+  "Security",
+  "cooklang",
+  "coq",
+  "crystal",
+  "css-extras",
+  "csv",
+  "cue",
+  "cypher",
+  "d",
+  "dart",
+  "dataweave",
+  "dax",
+  "dhall",
+  "diff",
+  "django",
+  "jinja2",
+  "dns-zone-file",
+  "dns-zone",
+  "docker",
+  "dockerfile",
+  "dot",
+  "gv",
+  "ebnf",
+  "editorconfig",
+  "eiffel",
+  "ejs",
+  "eta",
+  "elixir",
+  "elm",
+  "etlua",
+  "erb",
+  "erlang",
+  "excel-formula",
+  "xlsx",
+  "xls",
+  "fsharp",
+  "factor",
+  "false",
+  "firestore-security-rules",
+  "flow",
+  "fortran",
+  "ftl",
+  "gml",
+  "gamemakerlanguage",
+  "gap",
+  "code",
+  "gdscript",
+  "gedcom",
+  "gettext",
+  "po",
+  "gherkin",
+  "git",
+  "glsl",
+  "gn",
+  "gni",
+  "linker-script",
+  "ld",
+  "go",
+  "go-module",
+  "go-mod",
+  "gradle",
+  "graphql",
+  "groovy",
+  "haml",
+  "handlebars",
+  "hbs",
+  "mustache",
+  "haskell",
+  "hs",
+  "haxe",
+  "hcl",
+  "hlsl",
+  "hoon",
+  "http",
+  "Key",
+  "Transport",
+  "ichigojam",
+  "icon",
+  "icu-message-format",
+  "idris",
+  "idr",
+  "ignore",
+  "gitignore",
+  "hgignore",
+  "npmignore",
+  "inform7",
+  "ini",
+  "io",
+  "j",
+  "java",
+  "javadoc",
+  "like",
+  "javastacktrace",
+  "jexl",
+  "jolie",
+  "jq",
+  "jsdoc",
+  "js-extras",
+  "json",
+  "webmanifest",
+  "json5",
+  "jsonp",
+  "jsstacktrace",
+  "js-templates",
+  "julia",
+  "keepalived",
+  "keyman",
+  "kotlin",
+  "kt",
+  "kts",
+  "kumir",
+  "kum",
+  "kusto",
+  "latex",
+  "tex",
+  "context",
+  "latte",
+  "less",
+  "lilypond",
+  "ly",
+  "liquid",
+  "lisp",
+  "emacs",
+  "elisp",
+  "emacs-lisp",
+  "livescript",
+  "llvm",
+  "log",
+  "lolcode",
+  "lua",
+  "magma",
+  "makefile",
+  "markdown",
+  "md",
+  "markup-templating,"
+  "mata",
+  "matlab",
+  "maxscript",
+  "mel",
+  "mermaid",
+  "metafont",
+  "mizar",
+  "mongodb",
+  "monkey",
+  "moonscript",
+  "moon",
+  "n1ql",
+  "n4js",
+  "n4jsd",
+  "nand2tetris-hdl",
+  "naniscript",
+  "nani",
+  "nasm",
+  "neon",
+  "nevod",
+  "nginx",
+  "nim",
+  "nix",
+  "nsis",
+  "C",
+  "ocaml",
+  "odin",
+  "opencl",
+  "openqasm",
+  "qasm",
+  "oz",
+  "parigp",
+  "parser",
+  "pascal",
+  "objectpascal",
+  "pascaligo",
+  "psl",
+  "Axis",
+  "peoplecode",
+  "pcode",
+  "perl",
+  "php",
+  "phpdoc",
+  "php-extras",
+  "plant-uml",
+  "plantuml",
+  "plsql",
+  "powerquery",
+  "pq",
+  "mscript",
+  "powershell",
+  "processing",
+  "prolog",
+  "promql",
+  "properties",
+  "protobuf",
+  "pug",
+  "puppet",
+  "pure",
+  "purebasic",
+  "pbfasm",
+  "purescript",
+  "purs",
+  "python",
+  "py",
+  "qsharp",
+  "qs",
+  "q",
+  "qml",
+  "qore",
+  "r",
+  "racket",
+  "rkt",
+  "cshtml",
+  "razor",
+  "jsx",
+  "tsx",
+  "reason",
+  "regex",
+  "rego",
+  "renpy",
+  "rpy",
+  "rescript",
+  "res",
+  "rest",
+  "rip",
+  "roboconf",
+  "robotframework",
+  "robot",
+  "ruby",
+  "rb",
+  "rust",
+  "sas",
+  "sass",
+  "scss",
+  "scala",
+  "scheme",
+  "shell-session",
+  "sh-session",
+  "shellsession",
+  "smali",
+  "smalltalk",
+  "smarty",
+  "sml",
+  "smlnj",
+  "solidity",
+  "sol",
+  "solution-file",
+  "soy",
+  "sparql",
+  "rq",
+  "splunk-spl",
+  "sqf",
+  "sql",
+  "squirrel",
+  "stan",
+  "stata",
+  "iecst",
+  "stylus",
+  "supercollider",
+  "sclang",
+  "swift",
+  "systemd",
+  "t4-templating",
+  "t4-cs",
+  "t4",
+  "t4-vb",
+  "tap",
+  "tcl",
+  "tt2",
+  "textile",
+  "toml",
+  "tremor",
+  "trickle",
+  "troy",
+  "turtle",
+  "trig",
+  "twig",
+  "typescript",
+  "ts",
+  "typoscript",
+  "tsconfig",
+  "unrealscript",
+  "uscript",
+  "uc",
+  "uorazor",
+  "uri",
+  "url",
+  "v",
+  "vala",
+  "vbnet",
+  "velocity",
+  "verilog",
+  "vhdl",
+  "vim",
+  "visual-basic",
+  "vba",
+  "vb",
+  "warpscript",
+  "wasm",
+  "web-idl",
+  "webidl",
+  "wgsl",
+  "wiki",
+  "wolfram",
+  "mathematica",
+  "nb",
+  "wl",
+  "wren",
+  "xeora",
+  "xeoracube",
+  "xml-doc",
+  "xojo",
+  "xquery",
+  "yaml",
+  "yml",
+  "yang",
+  "zig";
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  // font
+  --font-default: "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif;
+  --font-monospace-default: iawriter-mono, Nitti, Menlo, Courier, monospace;
+  --font-monospace: var(--font-monospace-default);
+  --font-text: var(--font-default);
+  --font-tag: var(--font-monospace);
+  --font-file-tree: var(--font-default);
+  --font-source-view: var(--font-monospace);
+  --font-vault-name: var(--font-file-tree);
+  --font-interface-override: "";
+
+  --font-tag-size: 0.9em;
+  --font-latex-size: 1em;
+  --font-monospace-size: 0.95em;
+  --font-file-tree-size: 0.95em;
+  --font-vault-name-size: 1.25em;
+  --font-source-view-size: 1em;
+
+  --font-text-weight: normal;
+  --font-tag-weight: normal;
+  --font-latex-weight: normal;
+  --font-monospace-weight: normal;
+  --font-file-tree-weight: normal;
+  --font-vault-name-weight: normal;
+  --font-source-view-weight: normal;
+
+
+
+
+
+  // header
+  --font-header: var(--font-text);
+
+  --font-h1-size: 2.0em;
+  --font-h2-size: 1.8em;
+  --font-h3-size: 1.6em;
+  --font-h4-size: 1.4em;
+  --font-h5-size: 1.2em;
+  --font-h6-size: 1.1em;
+
+  --font-h1-weight: normal;
+  --font-h2-weight: var(--font-h1-weight);
+  --font-h3-weight: var(--font-h1-weight);
+  --font-h4-weight: var(--font-h1-weight);
+  --font-h5-weight: var(--font-h1-weight);
+  --font-h6-weight: var(--font-h1-weight);
+
+  --h1-color: var(--color-default-h1);
+  --h2-color: var(--color-default-h2);
+  --h3-color: var(--color-default-h3);
+  --h4-color: var(--color-default-h4);
+  --h5-color: var(--color-default-h5);
+  --h6-color: var(--color-default-h6);
+
+  --color-default-h1: var(--text-normal);
+  --color-default-h2: var(--text-normal);
+  --color-default-h3: var(--text-normal);
+  --color-default-h4: var(--text-normal);
+  --color-default-h5: var(--text-normal);
+  --color-default-h6: var(--text-normal);
+  --color-accent-h1: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h2: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h3: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h4: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h5: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h6: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-gradient-h1: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-gradient-h2: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 3%));
+  --color-gradient-h3: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 6%));
+  --color-gradient-h4: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 9%));
+  --color-gradient-h5: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 12%));
+  --color-gradient-h6: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 15%));
+
+  // strong
+  --font-strong-size: 1em;
+  --font-strong-weight: 900;
+  --font-strong-style: normal;
+  --font-strong-color: var(--text-strong);
+
+  --font-strong-decoration-line: none;
+  --font-strong-decoration-width: 1px;
+  --font-strong-decoration-style: solid;
+  --font-strong-decoration-color: var(--font-strong-color);
+  --font-strong-decoration-offset: 2px;
+
+  // em
+  --font-em-size: 1em;
+  --font-em-weight: normal;
+  --font-em-style: italic;
+  --font-em-color: var(--text-normal);
+
+  --font-em-decoration-line: none;
+  --font-em-decoration-width: 1px;
+  --font-em-decoration-style: solid;
+  --font-em-decoration-color: var(--font-em-color);
+  --font-em-decoration-offset: 2px;
+
+  // highlight
+  --font-highlight-size: 1em;
+  --font-highlight-weight: normal;
+  --font-highlight-style: normal;
+  --font-highlight-color: var(--text-reversed);
+  --font-highlight-bg-color: var(--color-accent);
+
+  --font-highlight-decoration-width: 2px;
+  --font-highlight-decoration-style: solid;
+  --font-highlight-decoration-line: none;
+  --font-highlight-decoration-color: var(--text-normal);
+  --font-highlight-decoration-offset: 3px;
+
+  // strikethrough
+  --font-strikethrough-size: 1em;
+  --font-strikethrough-weight: normal;
+  --font-strikethrough-style: normal;
+  --font-strikethrough-color: var(--text-muted);
+
+  --font-strikethrough-decoration-line: line-through;
+  --font-strikethrough-decoration-width: 1px;
+  --font-strikethrough-decoration-style: solid;
+  --font-strikethrough-decoration-color: var(--font-strikethrough-color);
+
+  // underlined
+  --font-underlined-size: 1em;
+  --font-underlined-weight: normal;
+  --font-underlined-color: var(--text-normal);
+
+  --font-underlined-decoration-line: underline;
+  --font-underlined-decoration-width: 1px;
+  --font-underlined-decoration-style: solid;
+  --font-underlined-decoration-color: var(--font-underlined-color);
+  --font-underlined-decoration-offset: 2px;
+
+  // inline title
+  --font-inline-title: var(--font-header);
+  --font-inline-title-size: 2em;
+  --font-inline-title-weight: 900;
+
+
+  --link-unresolved-color: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 20%));
+  --link-unresolved-color-hover: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%));
+  --link-external-color: var(--color-accent-ln5);
+  --link-external-color-hover: var(--color-accent);
+  --link-color: var(--color-accent-ln5);
+  --link-color-hover: var(--color-accent);
+  --font-inline-tile-color: var(--text-normal);
+
+  --text-accent-hover: var(--text-strong);
+
+  --link-decoration-line: underline;
+  --link-decoration-width: auto;
+  --link-decoration-style: solid;
+  --link-decoration-color: var(--link-color);
+  --link-decoration-offset: 2px;
+  --link-unresolved-decoration-line: underline;
+  --link-unresolved-decoration-width: auto;
+  --link-unresolved-decoration-style: dashed;
+  --link-unresolved-decoration-color: hsla(var(--link-unresolved-color), 0.3);
+  --link-unresolved-decoration-offset: 1px;
+  --link-unresolved-decoration-color-hover: hsla(var(--link-unresolved-color-hover), 0.3);
+
+  // task list
+  --checkbox-checked-color: hsla(var(--color-h), var(--color-s), var(--color-l));
+  --checkbox-border-color: var(--color-base-70);
+  --checkbox-color-hover: hsla(0, 0%, 73%, 0.5);
+  --checkbox-unchecked-color-hover: hsla(var(--color-h), var(--color-s), calc(var(--color-l)), 0.5);
+
+  --checkbox-color: var(--color-done);
+  --checklist-decoration-color: var(--text-normal);
+  --checklist-decoration-line: none;
+
+  --checklist-done-decoration-color: var(--text-muted);
+  --checklist-done-decoration-line: none;
+
+  --checklist-delete-decoration-color: var(--background-modifier-error);
+  --checklist-delete-decoration-line: line-through;
+
+  // tag
+  --tag-radius: 1em;
+  --blockquote-border-thickness: 2px;
+  --callout-dogs-ear-size: 30px;
+  --tab-curve: 6px;
+
+  // svg
+  --icon-color-focused: hsl(var(--color-h), var(--color-s), 30%);
+  --icon-color-hovering: var(--text-strong);
+
+  // preset accent color
+  --color-bw-h: 0;
+  --color-bw-s: 0%;
+  --color-green-h: 150;
+  --color-green-s: 100%;
+  --color-green-l: 40%;
+  --color-green-main: hsl(var(--color-green-h), var(--color-green-s), var(--color-green-l));
+  --color-orange-h: 30;
+  --color-orange-s: 100%;
+  --color-orange-l: 50%;
+  --color-orange-main: hsl(var(--color-orange-h), var(--color-orange-s), var(--color-orange-l));
+  --color-blue-h: 210;
+  --color-blue-s: 100%;
+  --color-blue-l: 50%;
+  --color-blue-main: hsl(var(--color-blue-h), var(--color-blue-s), var(--color-blue-l));
+  --color-red-h: 10;
+  --color-red-s: 80%;
+  --color-red-l: 50%;
+  --color-red-main: hsl(var(--color-red-h), var(--color-red-s), var(--color-red-l));
+  --color-yellow-h: 60;
+  --color-yellow-s: 80%;
+  --color-yellow-l: 40%;
+  --color-yellow-main: hsl(var(--color-yellow-h), var(--color-yellow-s), var(--color-yellow-l));
+  --color-pink-h: 330;
+  --color-pink-s: 100%;
+  --color-pink-l: 50%;
+  --color-pink-main: hsl(var(--color-pink-h), var(--color-pink-s), var(--color-pink-l));
+  --color-purple-h: 270;
+  --color-purple-s: 80%;
+  --color-purple-l: 60%;
+  --color-purple-main: hsl(var(--color-purple-h), var(--color-purple-s), var(--color-purple-l));
+  // element color
+
+  // custom accent color
+  --accent-color-light-hue-default: 254;
+  --accent-color-light-saturation-default: 80%;
+  --accent-color-light-lightness-default: 68%;
+  --accent-color-dark-hue-default: 254;
+  --accent-color-dark-saturation-default: 80%;
+  --accent-color-dark-lightness-default: 68%;
+
+  --accent-h: var(--color-h);
+  --accent-s: var(--color-s);
+  --accent-l: var(--color-l);
+
+  // accent color
+  --color-main: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent: var(--color-main) !important;
+  --color-accent-1: var(--color-main) !important;
+  --color-accent-ln5: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 5%));
+  --color-accent-ln10: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%));
+  --color-accent-ln15: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 15%));
+  --color-accent-ln20: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 20%));
+  --color-accent-o80: hsla(var(--color-h), var(--color-s), var(--color-l), 0.8);
+  --color-accent-o60: hsla(var(--color-h), var(--color-s), var(--color-l), 0.6);
+  --color-accent-o50: hsla(var(--color-h), var(--color-s), var(--color-l), 0.5);
+  --color-accent-o40: hsla(var(--color-h), var(--color-s), var(--color-l), 0.4);
+  --color-accent-o30: hsla(var(--color-h), var(--color-s), var(--color-l), 0.3);
+
+  // element color
+  --text-selection: hsla(var(--color-h), var(--color-s), var(--color-l), 0.15) !important;
+
+  --interactive-hover: var(--background-primary) !important;
+  --interactive-accent: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%)) !important;
+  --interactive-accent-hover: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 5%)) !important;
+
+  // other
+  --color-error: var(--background-modifier-error);
+  --color-done: hsl(120, 100%, 40%);
+  --color-warning: #fbbc04;
+  --color-info: hsl(210, 100%, 40%);
+  --color-ques: hsl(30, 100%, 40%);
+  --inactive-opacity: 0.3;
+  --inactive-hover-opacity: 0.8;
+  --focuse-transition-duration: 0.2s;
+
+  &.theme-light {
+    color-scheme: light;
+    --color-h: var(--color-bw-h);
+    --color-s: var(--color-bw-s);
+    --color-l: 10% --text-normal: #555555;
+    --text-strong: hsl(0, 0%, 0%);
+    --text-muted: #888888 !important;
+    --text-reversed: #fff;
+    --code-bg-color: #f7f7f7;
+    --inline-code-bg-color: hsla(0, 0%, 90%, 1);
+    --background-primary: #fff !important;
+    --background-primary-alt: #e8e8e8;
+    --background-secondary: #fafafa;
+    --background-secondary-alt: #d6d6d6;
+    --background-modifier-active-hover: #d9d9d9;
+    --background-modifier-border-focus: #d9d9d9;
+    --background-modifier-error-rgb: var(--color-red-rgb);
+    --button-shadow-color: rgba(0, 0, 0, 0.2);
+    --titlebar-isfocused: hsl(0, 0%, 92%);
+    --titlebar-not-focused: hsla(0, 0%, 70%, 1);
+    --divider-color: #d9d9d9;
+    --tab-bg-color: #ddd;
+    --tab-hover-bg-color: var(--background-modifier-active-hover);
+    --tab-active-bg-color: #eee;
+    --close-button-hover-bg-color: rgba(0, 0, 0, 0.1);
+    --switch-inset-shadow-color: rgba(0, 0, 0, 0.2);
+    --quote-bg-color: rgba(0, 0, 0, 0.05);
+
+    --border-color: #ccc;
+
+    &.accent-color-bw-dark {
+      --color-h: var(--color-bw-h);
+      --color-s: var(--color-bw-s);
+      --color-l: 10%;
+    }
+
+    &.accent-color-green-light {
+      --color-h: var(--color-green-h);
+      --color-s: var(--color-green-s);
+      --color-l: var(--color-green-l);
+    }
+
+    &.accent-color-orange-light {
+      --color-h: var(--color-orange-h);
+      --color-s: var(--color-orange-s);
+      --color-l: var(--color-orange-l);
+    }
+
+    &.accent-color-blue-light {
+      --color-h: var(--color-blue-h);
+      --color-s: var(--color-blue-s);
+      --color-l: var(--color-blue-l);
+    }
+
+    &.accent-color-red-light {
+      --color-h: var(--color-red-h);
+      --color-s: var(--color-red-s);
+      --color-l: var(--color-red-l);
+    }
+
+    &.accent-color-yellow-light {
+      --color-h: var(--color-yellow-h);
+      --color-s: var(--color-yellow-s);
+      --color-l: var(--color-yellow-l);
+    }
+
+    &.accent-color-pink-light {
+      --color-h: var(--color-pink-h);
+      --color-s: var(--color-pink-s);
+      --color-l: var(--color-pink-l);
+    }
+
+    &.accent-color-purple-light {
+      --color-h: var(--color-purple-h);
+      --color-s: var(--color-purple-s);
+      --color-l: var(--color-purple-l);
+    }
+
+    &.custom-accent-color {
+      --color-h: var(--accent-color-light-hue-default);
+      --color-s: var(--accent-color-light-saturation-default);
+      --color-l: var(--accent-color-light-lightness-default);
+    }
+  }
+
+  &.theme-dark {
+    color-scheme: dark;
+    --color-h: var(--color-bw-h);
+    --color-s: var(--color-bw-s);
+    --color-l: 90%;
+    --text-normal: #aaaaaa;
+    --text-strong: hsl(0, 0%, 100%);
+    --text-muted: #999999 !important;
+    --text-reversed: #111;
+    --code-bg-color: #181818;
+    --inline-code-bg-color: rgba(255, 255, 255, 0.1);
+    --background-primary: #111 !important;
+    --background-primary-alt: #242424;
+    --background-secondary: #151515;
+    --background-secondary-alt: #363636;
+    --background-modifier-active-hover: #222;
+    --background-modifier-border-focus: #222;
+    --button-shadow-color: rgba(255, 255, 255, 0.2);
+    --titlebar-isfocused: #171514;
+    --titlebar-not-focused: hsla(218, 1%, 30%, 1);
+    --divider-color: #303030;
+    --tab-bg-color: #303030;
+    --tab-hover-bg-color: var(--background-modifier-active-hover);
+    --tab-active-bg-color: #202020;
+    --close-button-hover-bg-color: rgba(255, 255, 255, 0.1);
+    --switch-inset-shadow-color: rgba(0, 0, 0, 0.2);
+    --quote-bg-color: rgba(255, 255, 255, 0.05);
+
+    --border-color: #333;
+
+    &.accent-color-bw-dark {
+      --color-h: var(--color-bw-h);
+      --color-s: var(--color-bw-s);
+      --color-l: 90%;
+    }
+
+    &.accent-color-green-dark {
+      --color-h: var(--color-green-h);
+      --color-s: var(--color-green-s);
+      --color-l: var(--color-green-l);
+    }
+
+    &.accent-color-orange-dark {
+      --color-h: var(--color-orange-h);
+      --color-s: var(--color-orange-s);
+      --color-l: var(--color-orange-l);
+    }
+
+    &.accent-color-blue-dark {
+      --color-h: var(--color-blue-h);
+      --color-s: var(--color-blue-s);
+      --color-l: var(--color-blue-l);
+    }
+
+    &.accent-color-red-dark {
+      --color-h: var(--color-red-h);
+      --color-s: var(--color-red-s);
+      --color-l: var(--color-red-l);
+    }
+
+    &.accent-color-yellow-dark {
+      --color-h: var(--color-yellow-h);
+      --color-s: var(--color-yellow-s);
+      --color-l: var(--color-yellow-l);
+    }
+
+    &.accent-color-pink-dark {
+      --color-h: var(--color-pink-h);
+      --color-s: var(--color-pink-s);
+      --color-l: var(--color-pink-l);
+    }
+
+    &.accent-color-purple-dark {
+      --color-h: var(--color-purple-h);
+      --color-s: var(--color-purple-s);
+      --color-l: var(--color-purple-l);
+    }
+
+    &.custom-accent-color {
+      --color-h: var(--accent-color-dark-hue-default);
+      --color-s: var(--accent-color-dark-saturation-default);
+      --color-l: var(--accent-color-dark-lightness-default);
+    }
+  }
+
+  &.colorful-headers {
+    --h1-color: var(--color-accent-h1);
+    --h2-color: var(--color-accent-h1);
+    --h3-color: var(--color-accent-h1);
+    --h4-color: var(--color-accent-h1);
+    --h5-color: var(--color-accent-h1);
+    --h6-color: var(--color-accent-h1);
+
+    &.header-color-gradient {
+      --h1-color: var(--color-gradient-h1);
+      --h2-color: var(--color-gradient-h2);
+      --h3-color: var(--color-gradient-h3);
+      --h4-color: var(--color-gradient-h4);
+      --h5-color: var(--color-gradient-h5);
+      --h6-color: var(--color-gradient-h6);
+    }
+  }
+}
+
+// scroll bar
+
+body * {
+  @include scroll-bar();
+}
+
+
+// paragraphs basic
+.markdown-rendered p,
+.markdown-source-view.is-live-preview .cm-line {
+  @include font();
+  line-height: 2;
+}
+
+// headers
+@for $i from 1 through 6 {
+
+  .markdown-rendered h#{$i},
+  .markdown-source-view.is-live-preview .cm-line.HyperMD-header-#{$i} {
+    @include font(var(--font-header), var(--font-h#{$i}-size), var(--font-h#{$i}-weight), var(--h#{$i}-color));
+  }
+
+  // justify header hovering underline position
+  .markdown-source-view.is-live-preview .cm-line.HyperMD-header-#{$i} {
+    &::after {
+      margin-top: calc(#{$i}px * 1.5 - 0.8rem);
+    }
+  }
+
+  // header level indicator content
+  body.header-level-indicator {
+    & :is(.markdown-rendered h#{$i}, .markdown-source-view.is-live-preview .cm-line.HyperMD-header-#{$i}):before {
+      content: "H#{$i}";
+    }
+  }
+}
+
+// header level indicator style
+// make collapse indicator invisible and the same position as the level indicator
+// so clicking the level indicator will trigger the collapse event
+body.header-level-indicator {
+  & .markdown-source-view.is-live-preview .cm-line.cm-line.HyperMD-header .collapse-indicator {
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+
+    & svg {
+      opacity: 0 !important;
+    }
+  }
+
+  & .markdown-rendered :is(h1, h2, h3, h4, h5, h6) .collapse-indicator {
+
+    transform: translate(1.2rem, -1.8rem);
+    cursor: pointer;
+
+    & svg {
+      opacity: 0 !important;
+    }
+  }
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header {
+  // max-content so the underline will not be too long
+  width: max-content;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+
+  // hovering underline
+  body.header-hovering-underline &:hover::after {
+    background-color: var(--text-normal);
+  }
+
+  // underline style
+  &::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+
+  // if is collapsed, change the color of the level indicator to give a hint
+  body.header-level-indicator &:has(.is-collapsed):before {
+    color: var(--text-strong);
+  }
+}
+
+// header level indicator style
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6):before,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header:before {
+  @include font($font-family: var(--font-monospace), $font-size: 14px, $color: var(--text-muted));
+  position: relative;
+  width: 20px;
+  margin: 0 5px 0 0;
+  transition: all 0.3s ease-in-out;
+}
+
+// strong
+.markdown-rendered strong,
+.markdown-source-view.is-live-preview .cm-line .cm-strong,
+.markdown-source-view.is-live-preview strong {
+  @include font(var(--font-text), var(--font-strong-size), var(--font-strong-weight), var(--font-strong-color));
+  text-decoration: var(--font-strong-decoration-line) var(--font-strong-decoration-style) var(--font-strong-decoration-color) var(--font-strong-decoration-width);
+  text-underline-offset: var(--font-strong-decoration-offset);
+  font-style: var(--font-strong-style);
+}
+
+// em
+.markdown-rendered em,
+.markdown-source-view.is-live-preview .cm-line .cm-em,
+.markdown-source-view.is-live-preview em {
+  @include font(var(--font-text), var(--font-em-size), var(--font-em-weight), var(--font-em-color));
+  text-decoration: var(--font-em-decoration-line) var(--font-em-decoration-style) var(--font-em-decoration-color) var(--font-em-decoration-width);
+  text-underline-offset: var(--font-em-decoration-offset);
+  font-style: var(--font-em-style);
+}
+
+// highlight(mark)
+.markdown-rendered mark,
+.markdown-source-view.is-live-preview .cm-line .cm-highlight,
+.markdown-source-view.is-live-preview mark {
+  @include font(var(--font-text), var(--font-highlight-size), var(--font-highlight-weight), var(--font-highlight-color) !important);
+  text-decoration: var(--font-highlight-decoration-line) var(--font-highlight-decoration-style) var(--font-highlight-decoration-color) var(--font-highlight-decoration-width);
+  text-underline-offset: var(--font-highlight-decoration-offset);
+  background-color: var(--font-highlight-bg-color);
+  font-style: var(--font-highlight-style);
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+// strikethrough
+.markdown-rendered del,
+.markdown-source-view.is-live-preview .cm-line .cm-strikethrough,
+.markdown-source-view.is-live-preview del {
+  @include font(var(--font-text), var(--font-strikethrough-size), var(--font-strikethrough-weight), var(--font-strikethrough-color));
+  text-decoration: var(--font-strikethrough-decoration-line) var(--font-strikethrough-decoration-style) var(--font-strikethrough-decoration-color) var(--font-strikethrough-decoration-width);
+  font-style: var(--font-strikethrough-style);
+}
+
+// underlined
+:is(.markdown-rendered, .markdown-source-view.is-live-preview) u {
+  @include font(var(--font-text), var(--font-underlined-size), var(--font-underlined-weight), var(--font-underlined-color));
+  text-decoration: var(--font-underlined-decoration-line) var(--font-underlined-decoration-style) var(--font-underlined-decoration-color) var(--font-underlined-decoration-width);
+  text-underline-offset: var(--font-underlined-decoration-offset);
+}
+
+// inline title
+:is(.markdown-rendered, .markdown-source-view.is-live-preview) .inline-title {
+  @include font(var(--font-inline-title), var(--font-inline-title-size), var(--font-inline-title-weight), var(--text-strong));
+}
+
+// canceled task
+body.enable-alternative-checkboxes {
+  .markdown-source-view.is-live-preview .HyperMD-task-line,
+  .markdown-rendered .task-list-item {
+
+    &:is([data-task="-"]) [class^=cm-list],
+    &:is([data-task="-"]) {
+      color: var(--checklist-delete-decoration-color);
+    }
+  }
+
+  .task-list-item-checkbox {
+
+    // empty checkbox
+    .markdown-source-view.is-live-preview .HyperMD-task-line[data-task=" "] &,
+    .markdown-rendered .task-list-item:not(.is-checked) > p &,
+    .markdown-rendered .task-list-item:not(.is-checked) > & {
+      &:hover {
+        border-color: var(--color-done);
+      }
+    }
+
+    // canceled task
+    .markdown-source-view.is-live-preview .HyperMD-task-line[data-task="-"] &,
+    .markdown-rendered .task-list-item[data-task="-"] > p &,
+    .markdown-rendered .task-list-item[data-task="-"] > & {
+      border-color: var(--color-error);
+      background-color: var(--color-error);
+
+      &:after {
+        -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 1 10 h 22 v 4 H 1 z" fill="black"/></svg>');
+        mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 1 10 h 22 v 4 H 1 z" fill="black"/></svg>');
+      }
+    }
+
+    // important task
+    .markdown-source-view.is-live-preview .HyperMD-task-line[data-task="!"] &,
+    .markdown-rendered .task-list-item[data-task="!"] > p &,
+    .markdown-rendered .task-list-item[data-task="!"] > & {
+      border-color: var(--color-warning);
+      background-color: var(--color-warning);
+
+      &:after {
+        -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 11 1 v 16 h 2 v -16 h -2 v 1 M 11 21 h 2 v 2 h -2 v -2 h 1" stroke="black" stroke-width="2" stroke-linejoin="round" /></svg>');
+        mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 11 1 v 16 h 2 v -16 h -2 v 1 M 11 21 h 2 v 2 h -2 v -2 h 1" stroke="black" stroke-width="2" stroke-linejoin="round" /></svg>');
+      }
+    }
+
+    // question task
+    .markdown-source-view.is-live-preview .HyperMD-task-line[data-task="?"] &,
+    .markdown-rendered .task-list-item[data-task="?"] > p &,
+    .markdown-rendered .task-list-item[data-task="?"] > & {
+      border-color: var(--color-ques);
+      background-color: var(--color-ques);
+
+      &:after {
+        -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="6.5 2 11 19" fill="none"><path d="M9.09009 9.00003 C9.32519 8.33169 9.78924 7.76813 10.4 7.40916 C11.0108 7.05019 12.079 6.94542 12.7773 7.06519C13.9093 7.25935 14.9767 8.25497 14.9748 9.49073C14.9748 11.9908 12 11.2974 12 14 M12 17 H 12.01" stroke="black" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" /></svg>');
+        mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 11 1 v 16 h 2 v -16 h -2 v 1 M 11 21 h 2 v 2 h -2 v -2 h 1" stroke="black" stroke-width="2" stroke-linejoin="round" /></svg>');
+      }
+    }
+
+    // info task
+    .markdown-source-view.is-live-preview .HyperMD-task-line:is([data-task=i], [data-task=I]) &,
+    .markdown-rendered .task-list-item:is([data-task=i], [data-task=I]) > p &,
+    .markdown-rendered .task-list-item:is([data-task=i], [data-task=I]) > & {
+      border-color: var(--color-info);
+      background-color: var(--color-info);
+
+      &:after {
+        -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 11 7 v 14 h -4 v 2 h 10 v -2 h -4 v -14 h -6 v 2 h 6 M 11 3 v -2 h 2 v 2 h -2 v -1 " stroke="black" fill="black" stroke-width="2" stroke-linejoin="round" /></svg>');
+        mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M 11 7 v 14 h -4 v 2 h 10 v -2 h -4 v -14 h -6 v 2 h 6 M 11 3 v -2 h 2 v 2 h -2 v -1 " stroke="black" fill="black" stroke-width="2" stroke-linejoin="round" /></svg>');
+      }
+    }
+  }
+
+  .markdown-source-view.is-live-preview .HyperMD-task-line .task-list-item-checkbox,
+  .markdown-rendered .task-list-item > p .task-list-item-checkbox,
+  .markdown-rendered .task-list-item > .task-list-item-checkbox {
+
+    &:checked {
+      border-color: var(--color-done);
+      background-color: var(--color-done);
+
+      &:hover {
+        border-color: var(--checkbox-border-color);
+        background-color: var(--checkbox-color-hover);
+      }
+    }
+  }
+}
+
+// task list
+.markdown-source-view.is-live-preview .HyperMD-task-line .task-list-item-checkbox,
+.markdown-rendered .task-list-item > p .task-list-item-checkbox,
+.markdown-rendered .task-list-item > .task-list-item-checkbox {
+  transition: all 0.3s ease-in-out;
+
+  // if circle-checkbox is enabled
+  body.circle-checkbox & {
+    border-radius: 50%;
+  }
+
+  &:checked {
+
+    &:after {
+      -webkit-mask-position: center center;
+      mask-position: center center;
+    }
+  }
+}
+
+
+// callout
+:is(.markdown-rendered, .markdown-source-view.is-live-preview) .callout {
+  position: relative;
+  padding: 20px 30px;
+  border-radius: 4px;
+  mix-blend-mode: normal;
+}
+
+// if callout-dogs-ear is enabled
+body.callout-dogs-ear :is(.markdown-rendered, .markdown-source-view.is-live-preview) .callout {
+  &:after {
+    content: "";
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: var(--callout-dogs-ear-size);
+    height: var(--callout-dogs-ear-size);
+    background: linear-gradient(to bottom right, rgba(var(--callout-color), 0.2) 50%, var(--background-primary) 50%);
+    -webkit-backdrop-filter: blur(2.5px);
+    backdrop-filter: blur(2.5px);
+    transition: all 0.3s ease-in-out;
+    box-shadow: -2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  // unfold the dogs ear
+  &:hover:after {
+    width: 0;
+    height: 0;
+  }
+}
+
+// blockquote
+.markdown-source-view.is-live-preview .HyperMD-quote.cm-line {
+  background-color: var(--quote-bg-color);
+
+  &::before,
+  & .cm-blockquote-border::before {
+    border-left: 4px solid var(--text-muted);
+  }
+}
+
+.markdown-rendered blockquote {
+  margin: 16px auto;
+  padding: 20px 30px;
+  background-color: var(--quote-bg-color);
+  border-radius: 4px;
+  color: var(--text-muted);
+  border-left: 4px solid var(--text-muted);
+  transition: all 0.2s ease;
+  position: relative;
+
+  & > p:first-child::before {
+    content: "”";
+    font-family: "Arial Black", sans-serif;
+    position: absolute;
+    display: block;
+    top: -20px;
+    right: 10px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--text-muted);
+    opacity: 0.2;
+
+  }
+
+  &:hover {
+    border-left-color: var(--text-normal);
+  }
+
+
+  & p {
+    margin-top: 0;
+  }
+}
+
+// mermaid
+:is(.markdown-source-view.is-live-preview, .markdown-rendered) .mermaid {
+  background-color: var(--background-primary);
+  overflow-x: auto;
+}
+
+// embed alt
+:is(.markdown-source-view.is-live-preview, .markdown-rendered) .media-embed:after {
+  body.embed-alt & {
+    content: attr(alt);
+    @include font(var(--font-default), 0.8em, 100, var(--text-muted));
+    display: block;
+    width: 100%;
+    text-align: end;
+    margin-top: 0.5em;
+  }
+
+  // embed alt position, with a default value of end
+  body.embed-alt.embed-alt-left & {
+    text-align: start;
+  }
+
+  body.embed-alt.embed-alt-middle & {
+    text-align: center;
+  }
+}
+
+
+// inline code
+.markdown-source-view.is-live-preview .cm-line .cm-inline-code,
+.markdown-source-view.is-live-preview .HyperMD-codeblock,
+.markdown-rendered code {
+  @include font(var(--font-monospace), var(--font-monospace-size), var(--font-monospace-weight), var(--text-muted));
+  background-color: var(--inline-code-bg-color);
+}
+
+// code block preview view
+.markdown-rendered pre {
+  border: none;
+  border-radius: 4px;
+  background-color: var(--code-bg-color);
+  position: relative;
+  margin: 16px auto;
+
+  &[class^=language-] {
+    padding: 20px 30px;
+
+    // language indicator
+    &:before {
+      @include font(Lato sans-serif, 0.9em, 100, var(--text-muted));
+      position: absolute;
+      right: 0.8em;
+      height: auto;
+      bottom: 0.8em;
+      width: auto;
+    }
+  }
+
+  // supoort for multiple languages
+  @each $l in $languages {
+    &.language-#{$l} {
+      &:before {
+        content: "#{$l}";
+      }
+    }
+  }
+
+  // copy button
+  &:hover button.copy-code-button {
+    opacity: 1;
+  }
+
+  & button.copy-code-button {
+    @include copy-button();
+    width: 50px;
+    height: 30px;
+    color: transparent;
+    opacity: 0;
+
+    &::after {
+      content: "Copy";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      background-color: var(--code-bg-color);
+      border: 1px solid var(--text-muted);
+
+      &::after {
+        color: var(--text-strong);
+      }
+    }
+  }
+}
+
+// code block source view
+.markdown-source-view.is-live-preview div.cm-line.HyperMD-codeblock.HyperMD-codeblock-bg {
+  border-radius: auto;
+  background-color: var(--code-bg-color);
+  padding: 0 30px;
+
+  &.HyperMD-codeblock-begin-bg {
+    border-radius: 4px 4px 0 0;
+
+    & span.code-block-flair {
+      @include copy-button();
+
+      & svg {
+        vertical-align: middle;
+      }
+
+      &:hover {
+        background-color: var(--code-bg-color);
+        border: 1px solid var(--text-muted);
+        color: var(--text-strong);
+      }
+    }
+  }
+
+  &.HyperMD-codeblock-end-bg {
+    border-radius: 0 0 4px 4px;
+  }
+}
+
+// inline math
+.markdown-source-view.is-live-preview,
+.markdown-rendered {
+
+  & div.math-block,
+  & span.math {
+    color: var(--text-strong);
+  }
+}
+
+// table
+:is(.markdown-source-view.is-live-preview, .markdown-rendered) div:has(> table) {
+  width: 100% !important;
+
+  & table {
+    white-space: pre-wrap;
+    width: 100%;
+
+    & .cm-s-obsidian .cm-line {
+      line-height: 1.3;
+    }
+
+    & .cm-gutters {
+      display: none;
+    }
+
+    & * {
+      border-color: var(--text-muted);
+      border-left: none;
+      border-right: none;
+    }
+
+    & thead {
+
+      & th {
+        border-top: none;
+        border-bottom: 1.5px solid var(--text-normal);
+        padding: 10px 20px !important;
+        text-align: center;
+        font-weight: inherit;
+        color: var(--text-strong);
+
+        & .cm-line.cm-active {
+          color: var(--text-strong);
+        }
+      }
+    }
+
+    & tbody {
+
+      & tr {
+        border-top: 1px solid var(--divider-color);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: var(--background-modifier-active-hover);
+        }
+      }
+
+      & td {
+        padding: 10px 10px !important;
+      }
+    }
+  }
+}
+
+
+// tag
+.markdown-rendered a.tag,
+.markdown-source-view.is-live-preview .cm-line .cm-hashtag,
+.metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
+  @include font(var(--font-tag), var(--font-tag-size) !important, var(--font-tag-weight), var(--text-strong));
+  transition: all 0.2s ease-in-out;
+  border-width: 1px;
+}
+
+// delete margin of tags in metadata to avoid the tags being too wide
+.metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
+
+  & .multi-select-pill-content {
+    margin: 0;
+  }
+
+  & .multi-select-pill-remove-button {
+    margin: 0;
+
+    & svg {
+      color: var(--text-normal);
+    }
+  }
+}
+
+.markdown-rendered a.tag,
+.metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
+  padding: 0 0.5em;
+}
+
+.markdown-source-view.is-live-preview .cm-line .cm-hashtag {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  &.cm-hashtag-begin {
+    padding-left: 0.5em;
+  }
+
+  &.cm-hashtag-end {
+    padding-right: 0.5em;
+  }
+}
+
+// if tag-fill is enabled
+body.tag-fill {
+
+  & .markdown-rendered a.tag,
+  & .metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
+    border-color: var(--color-accent-o40);
+    background-color: var(--color-accent-o30);
+    color: var(--text-strong);
+
+    &:hover {
+      border-color: var(--color-accent-o80);
+      background-color: var(--color-accent-o60);
+      color: var(--text-strong);
+    }
+  }
+
+  & .markdown-source-view.is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end) {
+    border-color: var(--color-accent-o40);
+    background-color: var(--color-accent-o30);
+    color: var(--text-strong);
+
+  }
+}
+
+// if tag-outline is enabled
+body.tag-outline {
+
+  & .markdown-rendered a.tag,
+  & .metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
+    border-color: var(--color-accent-o50);
+    background-color: transparent;
+    color: var(--text-strong);
+
+    &:hover {
+      border-color: var(--color-accent-o80);
+      background-color: var(--color-accent-o30);
+    }
+  }
+
+  & .markdown-source-view.is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end) {
+    border-color: var(--color-accent-o50);
+    background-color: transparent;
+    color: var(--text-strong);
+  }
+}
+
+.workspace-tab.mod-top,
+.workspace-tab-header-container,
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right,
+.workspace-ribbon.mod-left:before {
+  background-color: var(--background-primary);
+}
+
+// topbar and sidebar
+.workspace {
+
+  // if left sidedock is open
+  &.is-left-sidedock-open {
+    & .side-dock-ribbon.mod-left {
+      // dock ribbon color should be the same as primary background color
+      background-color: var(--background-primary);
+    }
+  }
+
+  // left sidedock tab item
+  & :is(.mod-left-split, .mod-right-split) .workspace-tabs .workspace-tab-header-container-inner {
+    gap: 0;
+
+    & .workspace-tab-header {
+      min-width: 30px;
+
+      & svg {
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover {
+        & .workspace-tab-header-inner {
+          background-color: transparent;
+        }
+
+        & svg {
+          stroke: var(--icon-color-hovering);
+        }
+      }
+
+      &.is-active {
+        & svg {
+          stroke: var(--icon-color-focused);
+        }
+      }
+    }
+
+  }
+
+  // main workspace
+  & .workspace-split.mod-vertical.mod-root .workspace-tabs {
+
+    & .workspace-tab-header {
+      &.is-active {
+        background-color: var(--tab-active-bg-color);
+
+        & .workspace-tab-header-inner-title {
+          color: var(--text-strong);
+        }
+      }
+
+      &:not(.is-active):hover {
+        & .workspace-tab-header-inner-title {
+          color: var(--text-normal);
+        }
+      }
+    }
+
+
+    & .workspace-tab-header-container-inner {
+      margin: 0;
+      padding-top: 2px;
+      gap: 0;
+    }
+
+    & .workspace-tab-header-container-inner .workspace-tab-header {
+      border-width: 0;
+      border-radius: 4px;
+      min-width: 100px;
+      height: 30px;
+      margin: 3.2px 5px 0 0;
+      padding: 1px 3px 1px;
+      color: var(--text-muted);
+      box-shadow: none;
+
+      & .workspace-tab-header-inner:after {
+        background-color: transparent;
+      }
+
+      // close button
+      & .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+        display: flex;
+        color: var(--text-normal);
+
+        &:hover {
+          color: var(--text-strong);
+          background-color: var(--close-button-hover-bg-color);
+        }
+      }
+    }
+  }
+}
+
+.workspace .workspace-tabs .workspace-tab-header-container-inner .workspace-tab-header {
+  background-color: transparent;
+
+  &:before,
+  &:after {
+    box-shadow: none;
+  }
+}
+
+// links in source view
+.markdown-source-view.is-live-preview {
+
+  & .cm-hmd-internal-link:has(.is-unresolved),
+  & .is-unresolved {
+    &:hover {
+      -webkit-text-decoration: var(--link-unresolved-decoration-line) var(--link-unresolved-decoration-style) var(--link-unresolved-decoration-color) var(--link-unresolved-decoration-width);
+      text-decoration: var(--link-unresolved-decoration-line) var(--link-unresolved-decoration-style) var(--link-unresolved-decoration-color) var(--link-unresolved-decoration-width);
+      text-underline-offset: var(--link-unresolved-decoration-offset);
+      opacity: var(--link-unresolved-opacity);
+      color: var(--link-unresolved-color);
+    }
+  }
+}
+
+// sidedock settings
+.workspace {
+  & .mod-left .side-dock-settings {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: 12px;
+    left: 4px;
+    width: 35px;
+  }
+}
+
+.clickable-icon:not([aria-disabled=true]) {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  opacity: 0.75;
+  background-color: transparent;
+
+  &:hover {
+    opacity: 1;
+    background-color: transparent;
+
+    & svg {
+      stroke: var(--icon-color-hovering);
+    }
+  }
+
+  &[aria-disabled=true] {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+// embed block edit button
+.markdown-source-view.is-live-preview .cm-embed-block .edit-block-button {
+
+  & svg {
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover {
+    background-color: transparent !important;
+
+    & svg {
+      stroke: var(--icon-color-hovering);
+    }
+  }
+
+}
+
+// file tree
+.workspace .mod-left-split {
+  body.color-expanded-folder-indicator & .tree-item-icon:not(.is-collapsed) svg {
+    stroke: hsl(var(--color-h), var(--color-s), var(--color-l));
+  }
+
+  & .nav-folder.mod-root > .nav-folder-title {
+    @include font(var(--font-vault-name), var(--font-vault-name-size), var(--font-vault-name-weight), var(--text-strong));
+    background-color: transparent;
+    justify-content: center;
+    padding: 8px;
+
+    & .nav-folder-title-content {
+      padding: 0;
+      height: auto;
+    }
+  }
+
+  // folder icon
+  body.file-tree-icons & .nav-folder-title .nav-folder-title-content:not(:nth-child(1)):before {
+    content: "";
+    position: relative;
+    top: 0.15em;
+    left: -0.3em;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--text-normal);
+    -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M9.17 6l2 2H20v10H4V6h5.17M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M9.17 6l2 2H20v10H4V6h5.17M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+  }
+
+  & .nav-file-title,
+  & .nav-folder-title {
+    @include font(var(--font-file-tree), var(--font-file-tree-size), var(--font-file-tree-weight), var(--text-normal));
+  }
+
+  & .tree-item-self:not(.is-active) {
+    opacity: 0.5;
+  }
+
+  & .tree-item-inner {
+    padding-left: 0.3em;
+    height: 21.52px;
+  }
+}
+
+// file tree icons
+body.file-tree-icons .nav-file-title {
+
+  &:is([data-path$=".md"], [data-path$=".markdown"]) .nav-file-title-content:before {
+    content: "";
+    position: relative;
+    top: 0.15em;
+    left: -0.3em;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--text-normal);
+    -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+  }
+
+  &[data-path$=".pdf"] .nav-file-title-content:before {
+    content: "";
+    position: relative;
+    top: 0.15em;
+    left: -0.3em;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--text-normal);
+    -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm12 6V9c0-.55-.45-1-1-1h-2v5h2c.55 0 1-.45 1-1zm-2-3h1v3h-1V9zm4 2h1v-1h-1V9h1V8h-2v5h1zm-8 0h1c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1H9v5h1v-2zm0-2h1v1h-1V9z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm12 6V9c0-.55-.45-1-1-1h-2v5h2c.55 0 1-.45 1-1zm-2-3h1v3h-1V9zm4 2h1v-1h-1V9h1V8h-2v5h1zm-8 0h1c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1H9v5h1v-2zm0-2h1v1h-1V9z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+  }
+
+  &:is([data-path$=".jpeg"], [data-path$=".jpg"], [data-path$=".png"]) .nav-file-title-content:before {
+    content: "";
+    position: relative;
+    top: 0.15em;
+    left: -0.3em;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--text-normal);
+    -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+  }
+
+  &[data-path$=".mp3"] .nav-file-title-content:before {
+    content: "";
+    position: relative;
+    top: 0.15em;
+    left: -0.3em;
+    display: inline-block;
+    background-color: var(--text-normal);
+    -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+  }
+
+  &[data-path$=".mp4"] .nav-file-title-content:before {
+    content: "";
+    position: relative;
+    top: 0.15em;
+    left: -0.3em;
+    display: inline-block;
+    background-color: var(--text-normal);
+    -webkit-mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M15 8v8H5V8h10m1-2H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4V7c0-.55-.45-1-1-1z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M15 8v8H5V8h10m1-2H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4V7c0-.55-.45-1-1-1z" stroke="black" fill="black" stroke-width="0.6" stroke-linejoin="round" /></svg>');
+  }
+}
+
+.nav-file-title {
+  border: 1px solid transparent;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+
+body.indicate-ascendant .tree-item:has(.nav-file-title:hover):not(.nav-folder.mod-root) > .tree-item-self:not(.is-active) {
+  background-color: var(--nav-item-background-hover);
+  border-radius: var(--radius-s);
+  opacity: 0.8;
+}
+
+.workspace .mod-left-split .nav-folder-title:not(.is-acitve, .nav-folder.mod-root > .nav-folder-title):hover {
+  opacity: 0.8;
+
+  body.indicate-child & ~ .tree-item-children {
+    background-color: var(--nav-item-background-hover);
+    border-radius: var(--radius-s);
+  }
+}
+
+body.active-file-border .workspace .mod-left-split .nav-file-title.is-active {
+  border-width: 1px;
+  border-style: solid;
+  border-color: hsl(var(--color-h), var(--color-s), var(--color-l));
+  border-radius: var(--radius-s);
+  color: var(--text-strong);
+  opacity: 1;
+}
+
+body.opaque-expanded-folder .workspace .mod-left-split .nav-folder:not(.is-collapsed) > .tree-item-self {
+  opacity: 1;
+}
+
+.view-header {
+  .workspace-leaf & .view-header-title-container {
+    & .view-header-title {
+      min-width: 10%;
+      padding: 0;
+      flex: 1 1 auto;
+      color: var(--text-normal);
+    }
+
+    & .view-header-title-parent {
+      max-width: 100%;
+      overflow: auto;
+      margin-right: 10px;
+      color: var(--text-normal);
+
+      & .view-header-breadcrumb {
+        color: var(--text-muted);
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: var(--text-strong);
+          background-color: transparent;
+        }
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+.view-header-title-container {
+
+  &:not(.mod-at-start):before,
+  &:not(.mod-at-end):after {
+    display: none;
+  }
+}
+
+// setting panel
+body {
+
+  &.use-builtin-color-picker {
+    --color-h: var(--accent-h) !important;
+    --color-s: var(--accent-s) !important;
+    --color-l: var(--accent-l) !important;
+  }
+
+  &:not(.use-builtin-color-picker) .vertical-tab-nav-item {
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--tab-bg-color);
+    }
+
+    &.is-active {
+      background-color: var(--text-muted);
+      color: var(--background-primary);
+
+      &:hover {
+        background-color: var(--text-muted);
+      }
+    }
+
+  }
+
+  & .setting-item.setting-item-heading .setting-item-info .setting-item-name,
+  & .vertical-tab-header-group-title {
+    color: var(--text-strong);
+  }
+
+  & .modal-close-button {
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      color: var(--text-strong);
+    }
+  }
+
+  & select,
+  & select.dropdown,
+  & button:not(.clickable-icon) {
+    transition: all 0.3s;
+    box-shadow: none;
+    background-color: var(--tab-bg-color);
+    border: 1px solid var(--background-modifier-border);
+
+    &:hover {
+      border: 1px solid var(--text-strong);
+      outline: none;
+      box-shadow: none;
+      background-color: var(--interactive-hover);
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 1px var(--text-strong);
+    }
+  }
+
+  & button.mod-cta {
+    border: 1px solid var(--interactive-accent);
+    background-color: var(--interactive-accent);
+
+    &:hover {
+      background-color: var(--interactive-hover);
+      color: var(--text-strong);
+    }
+  }
+
+  & input[type=range] {
+    border: 1px solid var(--background-modifier-border-focus);
+    height: 0.3em;
+    transition: all 0.3s;
+    border-radius: 0.5em;
+
+    &:hover {
+      background-color: var(--interactive-hover);
+      height: 0.6em;
+      border: 1px solid var(--text-strong);
+    }
+  }
+
+  & input[type=text],
+  & input[type=search],
+  & input[type=number],
+  & textarea {
+    transition: all 0.3s;
+    border: 1px solid var(--background-modifier-border);
+
+    &:hover {
+      border: 1px solid var(--background-modifier-border-hover);
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: 0 0 0 1px var(--text-strong);
+    }
+  }
+
+  & .checkbox-container {
+    border: 2px solid var(--background-modifier-border-focus);
+    overflow-x: hidden;
+    border-radius: 1em;
+    transition: all 0.3s;
+    box-shadow: none;
+
+    &:has(input[type=checkbox]) {
+      width: 40px;
+      padding-right: 0;
+    }
+
+    &:focus-within {
+      outline: none !important;
+    }
+
+    &:hover {
+      background-color: var(--background-modifier-border-hover);
+      box-shadow: inset 2px 2px 5px 4px var(--switch-inset-shadow-color);
+      border: 2px solid var(--text-muted);
+
+      &:after {
+        box-shadow: -2px -2px 3px 2px var(--switch-inset-shadow-color);
+      }
+    }
+
+    &:after {
+      margin-top: 0;
+      left: -20px;
+      width: 100% !important;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:active:after {
+      left: -2px;
+    }
+
+    &.is-enabled {
+      border: 2px solid var(--interactive-accent);
+
+      &:hover {
+        background-color: var(--interactive-accent);
+        box-shadow: inset 2px 2px 5px 4px var(--switch-inset-shadow-color);
+        border: 2px solid var(--interactive-accent-hover);
+
+        &:after {
+          box-shadow: -2px -2px 3px 2px var(--switch-inset-shadow-color);
+        }
+      }
+
+      &:after {
+        transform: translateX(38px);
+      }
+
+      &:active:after {
+        transform: translateX(2px);
+      }
+    }
+  }
+
+
+  & .checkbox-container:has(input[type=checkbox]).mod-small {
+    width: 34px;
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--background-modifier-border-hover);
+      box-shadow: inset 2px 2px 5px 4px var(--switch-inset-shadow-color);
+
+      &:after {
+        box-shadow: -2px -2px 3px 2px var(--switch-inset-shadow-color);
+      }
+    }
+
+    & input {
+      width: 30px;
+    }
+
+    &:before {
+      width: 30px;
+    }
+
+    &:after {
+      top: -2px;
+      width: 30px;
+      left: -17px;
+    }
+
+    &:active:after {
+      transform: translateX(17px);
+    }
+
+    &.is-enabled {
+      border: 2px solid var(--interactive-accent);
+
+      &:hover {
+        background-color: var(--interactive-accent);
+        box-shadow: inset 2px 2px 5px 4px var(--switch-inset-shadow-color);
+
+        &:after {
+          box-shadow: -2px -2px 3px 2px var(--switch-inset-shadow-color);
+        }
+      }
+
+      &:after {
+        transform: translateX(32px);
+      }
+
+      &:active:after {
+        transform: translateX(17px);
+      }
+    }
+
+    & .style-settings-container .themed-color-wrapper {
+      & > div + div {
+        margin-top: 0;
+      }
+
+      & button {
+        border: 2px solid var(--background-modifier-border);
+        transition: all 0.3s;
+        box-shadow: none;
+
+        &:hover {
+          border: 2px solid var(--background-modifier-border-hover);
+          box-shadow: 0 1px 0.6px 1.5px var(--button-shadow-color);
+        }
+      }
+    }
+  }
+
+  button[aria-label="Restore default"] {
+    height: 40px;
+  }
+
+  .setting-item {
+    &[data-id*=hue] .slider {
+      background: linear-gradient(to right, hsl(0, 100%, 50%) 0%, hsl(60, 100%, 50%) 17%, hsl(120, 100%, 50%) 33%, hsl(180, 100%, 50%) 50%, hsl(240, 100%, 50%) 67%, hsl(300, 100%, 50%) 83%, hsl(0, 100%, 50%) 100%);
+    }
+
+    & .themed-color-wrapper > div + div {
+      margin-top: 0;
+    }
+
+    & .setting-item-info .setting-item-name {
+      @include font(--font-default, 1rem, 600, var(--text-strong));
+    }
+
+    &.style-settings-heading {
+
+      &[data-level="0"] + .style-settings-container {
+        border-radius: 10px;
+      }
+
+      &[data-level]:not(.is-collapsed) {
+        margin-bottom: 10px;
+      }
+
+      &:not([data-level="0"], [data-level="1"]),
+      &:not([data-level="0"], [data-level="1"]) + .style-settings-container {
+        padding-left: 15px;
+      }
+    }
+
+    :has(&).style-settings-container {
+      padding-bottom: 0;
+    }
+
+    &:nth-last-child(1) {
+      border-bottom: 1px solid var(--background-modifier-border);
+    }
+
+    & + .setting-item-heading {
+      margin-top: 0;
+      border-top: 1px solid var(--background-modifier-border);
+    }
+  }
+
+  & .community-item {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid var(--text-strong);
+    }
+  }
+}
+
+
+// focus mode
+body.fade-out-inactive-lines {
+  & :is(.cm-line:not(.cm-active), .cm-embed-block) {
+    transition: var(--focuse-transition-duration);
+    opacity: var(--inactive-opacity);
+
+    &:hover {
+      opacity: var(--inactive-hover-opacity);
+    }
+  }
+
+  & .cm-line.cm-active {
+    opacity: 1;
+  }
+}
+
+// source code view
+.markdown-source-view:not(.is-live-preview) {
+  --color-text: var(--text-normal);
+  --color-header: var(--text-strong);
+  --color-strong: var(--text-strong);
+
+  .theme-dark & {
+    --color-list-bullet: rgb(216, 179, 139);
+    --color-link: rgb(87, 128, 243);
+    --color-inline-code: rgb(87, 222, 107);
+    --color-quote-format: rgb(116, 152, 93);
+  }
+
+  .theme-light & {
+    --color-list-bullet: rgb(148, 101, 51);
+    --color-link: rgb(87, 128, 243);
+    --color-inline-code: rgb(51, 139, 64);
+    --color-quote-format: rgb(116, 152, 93);
+  }
+
+  & .cm-line {
+    @include font(var(--font-source-view), var(--font-text-size), var(--font-source-view-weight), var(--color-text));
+    background-color: transparent;
+
+    &.cm-active {
+      background-color: var(--background-modifier-border);
+    }
+  }
+
+  & .inline-title {
+    @include font(var(--font-source-view), var(--font-inline-title-size), var(--font-source-view-weight), var(--color-text));
+  }
+
+  & .cm-header {
+    color: var(--color-header);
+    line-height: 1.5;
+  }
+
+  & :is(.cm-link, .cm-hmd-internal-link) {
+    color: var(--color-link);
+
+    &:hover {
+      text-decoration: none;
+      color: var(--color-link);
+    }
+  }
+
+  & :is(.cm-url):not(.cm-formatting-link-string) {
+    color: var(--color-text);
+    -webkit-text-decoration: underline solid 2px var(--color-text);
+    text-decoration: underline solid 2px var(--color-text);
+    text-underline-offset: 4px;
+  }
+
+  & .cm-formatting-link {
+    color: var(--color-text);
+  }
+
+  & .cm-highlight {
+    background-color: transparent;
+  }
+
+  & .cm-strong {
+    color: var(--color-strong);
+  }
+
+  & .cm-formatting {
+
+    &.cm-formatting-list {
+      color: var(--color-list-bullet);
+    }
+
+    &.cm-formatting-link-string {
+      color: var(--color-text);
+    }
+  }
+
+  & .cm-inline-code {
+    color: var(--color-inline-code);
+    white-space: nowrap;
+  }
+
+  & .cm-hashtag {
+    color: var(--color-text);
+    font-size: var(--font-text-size);
+    padding: 0;
+    background: transparent;
+  }
+
+  & .cm-formatting-quote {
+    color: var(--color-quote-format);
+  }
+}
+
+// zen-mode
+body.zen-mode {
+  & .side-dock-ribbon.is-collapsed {
+    border-right: none;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  & .workspace-ribbon.is-collapsed.mod-left:before {
+    display: none;
+  }
+
+  & .workspace-ribbon.mod-left:before,
+  & .mod-right-split .sidebar-toggle-button.mod-right {
+    background-color: var(--background-primary) !important;
+    border-bottom: none;
+  }
+
+  & .sidebar-toggle-button.mod-right {
+    background-color: var(--background-primary) !important;
+  }
+
+
+  & :is(.mod-root .workspace-tab-header-container, .view-header) {
+    background-color: var(--background-primary);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    border-bottom: none;
+  }
+
+  & .mod-root .workspace-tab-header-container:hover,
+  & .view-header:hover {
+
+    &,
+    & + .workspace-tab-container .view-header {
+      height: 40px;
+      opacity: 1;
+    }
+  }
+}
+
+// backlink pane
+.embedded-backlinks {
+
+  & .backlink-pane {
+
+    & .tree-item-self.is-clickable {
+      & .tree-item-inner {
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        background-color: transparent;
+
+        & .tree-item-inner {
+          color: var(--text-strong);
+        }
+      }
+    }
+  }
+
+  & .search-input-container {
+    width: calc(100% - 200px);
+    margin-left: 0;
+  }
+}
+
+// plugins support
+// calendar
+#calendar-container {
+
+  & .nav .arrow,
+  & .nav .reset-button,
+  & table.calendar .day {
+    transition: all 0.3s ease-in-out;
+
+    & svg {
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: var(--text-strong);
+
+      & svg {
+        color: var(--text-strong);
+      }
+    }
+  }
+}
+
+// search
+.search-row input[type=search] {
+  transition: all 0.3s;
+  border: 1px solid var(--background-modifier-border);
+
+  &:hover {
+    border: 1px solid var(--background-modifier-border-hover);
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 1px var(--text-strong);
+  }
+}
+
+// dataview
+.dataview {}
+
+// style settings item
+
+.setting-item {
+  // &:is([data-id^=custom-accent-color-for-], [data-id^=custom-accent-color-]) {
+  //   display: none;
+
+  //   body.custom-accent-color & {
+  //     display: flex;
+  //   }
+  // }
+
+  body:not(.custom-accent-color) &:is([data-id^=custom-accent-color-for-], [data-id^=custom-accent-color-]) {
+    display: none;
+  }
+
+  body:not(.colorful-headers) &:is([data-id=header-color-gradient]) {
+    display: none;
+  }
+
+  body:not(.callout-dogs-ear) &:is([data-id^=callout-dogs-ear-size]) {
+    display: none;
+  }
+
+  body:not(.fade-out-inactive-lines) &:is([data-id=inactive-opacity], [data-id=inactive-hover-opacity], [data-id=focuse-transition-duration]) {
+    display: none;
+  }
+
+  body.use-builtin-color-picker &:is([data-id^=accent-color-for], [data-id^=custom-accent-color-for-], [data-id^=custom-accent-color-], [data-id=custom-accent-color]) {
+    display: none;
+  }
+}
+
+.style-settings-container {
+  @extend .markdown-rendered;
+}
+
+/* @settings
+name: Accent Color
+id: accent-color
+settings:
+  -
+    id: accent-color-info
+    title: Look at this
+    title.zh: 看这
+    type: info-text
+    description: |
+      - If you want to use the built-in color picker, you can turn on `Use Built-in Color Picker`.
+      - If `Use Built-in Color Picker` is off, please use the settings below to customize accent color.
+      - However the built-in color picker will still influence the text color in buttons with a accent color background even if `Use Built-in Color Picker` is off.
+    description.zh: |
+      - 如果想使用内置的颜色选择器，请打开“使用内建颜色选择器”。
+      - 如果“使用内建颜色选择器”关闭，请使用下面的设置来自定义强调色。
+      - **注意**：即使“使用内建颜色选择器”关闭，内置的颜色选择器仍然会影响带有强调色背景的按钮的文本颜色。
+    markdown: true
+  -
+    id: use-builtin-color-picker
+    title: Use Built-in Color Picker
+    title.zh: 使用内建颜色选择器
+    type: class-toggle
+    default: false
+  -
+    id: accent-color-for-light-theme
+    title: Accent Color for Light Theme
+    title.zh: 亮色主题强调色
+    description: Selection will be ignored if custom accent color is on. (Using `Custom Accent Color` is recommended.)
+    description.zh: 如果自定义强调色开启，该选择将被忽略。（建议使用“自定义强调色”）
+    type: class-select
+    allowEmpty: false
+    default: accent-color-bw-light
+    options:
+    -
+      label: Panda
+      value: accent-color-bw-light
+    -
+      label: Green
+      value: accent-color-green-light
+    -
+      label: Red
+      value: accent-color-red-light
+    -
+      label: Yellow
+      value: accent-color-yellow-light
+    -
+      label: Blue
+      value: accent-color-blue-light
+    -
+      label: Orange
+      value: accent-color-orange-light
+    -
+      label: Purple
+      value: accent-color-purple-light
+    -
+      label: Pink
+      value: accent-color-pink-light
+  -
+    id: accent-color-for-dark-theme
+    title: Accent Color for Dark Theme
+    title.zh: 暗色主题强调色
+    description: Selection will be ignored if custom accent color is on. (Using `Custom Accent Color` is recommended.)
+    description.zh: 如果自定义强调色开启，该选择将被忽略。（建议使用“自定义强调色”）
+    type: class-select
+    allowEmpty: false
+    default: accent-color-bw-dark
+    options:
+    -
+      label: Panda
+      value: accent-color-bw-dark
+    -
+      label: Green
+      value: accent-color-green-dark
+    -
+      label: Red
+      value: accent-color-red-dark
+    -
+      label: Yellow
+      value: accent-color-yellow-dark
+    -
+      label: Blue
+      value: accent-color-blue-dark
+    -
+      label: Orange
+      value: accent-color-orange-dark
+    -
+      label: Purple
+      value: accent-color-purple-dark
+    -
+      label: Pink
+      value: accent-color-pink-dark
+  -
+    id: custom-accent-color
+    title: Custom Accent Color
+    title.zh: 自定义强调色
+    description: Selections above will be ignored if this toggle is on. (I know it's annoying but please bear with me.)
+    description.zh: 如果开启，上面的选择将被忽略。（反复强调别嫌啰嗦）
+    type: class-toggle
+    default: false
+  -
+    id: custom-accent-color-for-light-theme
+    title: Custom Accent Color for Light Theme
+    title.zh: 亮色主题自定义强调色
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: accent-color-light-hue-default
+    title: Hue
+    title.zh: 色相
+    description: Hover to preview.
+    description.zh: 鼠标悬停进行预览。
+    type: variable-number-slider
+    min: 0
+    max: 360
+    step: 1
+    default: 254
+  -
+    id: accent-color-light-saturation-default
+    title: Saturation(%)
+    title.zh: 饱和度（%）
+    description: The higher the value, the more vivid the color.
+    description.zh: 数值越高，颜色越鲜艳。
+    type: variable-number-slider
+    format: "%"
+    min: 0
+    max: 100
+    step: 1
+    default: 80
+  -
+    id: accent-color-light-lightness-default
+    title: Lightness(%)
+    title.zh: 亮度（%）
+    description: The higher the value, the lighter the color.
+    description.zh: 数值越高，颜色越亮。
+    type: variable-number-slider
+    format: "%"
+    min: 0
+    max: 100
+    step: 1
+    default: 68
+  -
+    id: custom-accent-color-for-dark-theme
+    title: Custom Accent Color for Dark Theme
+    title.zh: 暗色主题自定义强调色
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: accent-color-dark-hue-default
+    title: Hue
+    title.zh: 色相
+    description: Hover to preview.
+    description.zh: 鼠标悬停进行预览。
+    type: variable-number-slider
+    min: 0
+    max: 360
+    step: 1
+    default: 254
+  -
+    id: accent-color-dark-saturation-default
+    title: Saturation(%)
+    title.zh: 饱和度（%）
+    description: The higher the value, the more vivid the color.
+    description.zh: 数值越高，颜色越鲜艳。
+    type: variable-number-slider
+    format: "%"
+    min: 0
+    max: 100
+    step: 1
+    default: 80
+  -
+    id: accent-color-dark-lightness-default
+    title: Lightness(%)
+    title.zh: 亮度（%）
+    description: The higher the value, the lighter the color.
+    description.zh: 数值越高，颜色越亮。
+    type: variable-number-slider
+    format: "%"
+    min: 0
+    max: 100
+    step: 1
+    default: 68
+
+
+*/
+/* @settings
+name: Font & Text
+id: font
+settings:
+  -
+    id: font-family
+    title: Font Family
+    title.zh: 字体
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-text
+    title: Text Font
+    title.zh: 文本字体
+    description: This will be the default font for most of the text in editor except for math and code.
+    description.zh: 将会影响编辑器中除了数学公式和代码外的几乎所有文字。
+    type: variable-text
+    default: '"Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif'
+    allowEmpty: true
+  -
+    id: font-header
+    title: Header Font
+    title.zh: 标题字体
+    description: Will be the same as text font if empty.
+    description.zh: 如果为空，将与文本字体相同。
+    type: variable-text
+    default: ''
+    allowEmpty: true
+  -
+    id: font-monospace
+    title: Monospace Font
+    title.zh: 等宽字体
+    description: This will be the default font for code and tags in editor.
+    description.zh: 将会影响编辑器中的代码和标签等。
+    type: variable-text
+    default: 'iawriter-mono, Nitti, Menlo, Courier, monospace'
+    allowEmpty: true
+  -
+    id: font-interface-override
+    title: UI Font
+    title.zh: 界面字体
+    description: Will be Obsidian's default font if empty.
+    description.zh: 如果为空，将使用 Obsidian 的默认字体。
+    type: variable-text
+    default: ''
+    allowEmpty: true
+  -
+    id: font-file-tree
+    title: File Tree Font
+    title.zh: 文件树字体
+    type: variable-text
+    default: ''
+    allowEmpty: true
+  -
+    id: font-vault-name
+    title: Vault Name Font
+    title.zh: 库名称字体
+    description: Will be the same as file tree font if empty.
+    description.zh: 如果为空，将与文件树字体相同。
+    type: variable-text
+    default: ''
+    allowEmpty: true
+  -
+    id: font-inline-title
+    title: Inline Title Font
+    title.zh: 行内标题字体
+    description: Will be the same as header font if empty.
+    description.zh: 如果为空，将与标题字体相同。
+    type: variable-text
+    default: ''
+    allowEmpty: true
+  -
+    id: font-source-view
+    title: Source View Font
+    title.zh: 源代码视图字体
+    description: Will be monospace font if empty.
+    description.zh: 如果为空，将使用等宽字体。
+    type: variable-text
+    default: ''
+    allowEmpty: true
+  -
+    id: strong-style
+    title: Strong Style
+    title.zh: 粗体样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-strong-color
+    title: Color
+    title.zh: 颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsl(0, 0%, 0%)
+    default-dark: hsl(0, 0%, 100%)
+  -
+    id: font-strong-weight
+    title: Weight
+    title.zh: 粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 900
+    min: 100
+    max: 900
+    step: 100
+  -
+    id: font-strong-size
+    title: Size(em)
+    title.zh: 大小（em）
+    description: Base on the font size inherited from its parent.
+    description.zh: 基于从父级继承的字体大小。
+    type: variable-number-slider
+    min: 0.5
+    max: 2
+    step: 0.1
+    format: em
+    default: 1
+  -
+    id: custom-em-style
+    title: Emphasis Style
+    title.zh: 强调样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-em-color
+    title: Color
+    title.zh: 颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsl(0, 0%, 33.3%)
+    default-dark: hsl(0, 0%, 66.7%)
+  -
+    id: font-em-style
+    title: Style
+    title.zh: 样式
+    description: In case you want to make the text not italic.
+    description.zh: 万一你不喜欢斜体……
+    type: variable-select
+    default: italic
+    allowEmpty: false
+    options:
+    -
+      label: italic
+      value: italic
+    -
+      label: normal
+      value: normal
+  -
+    id: font-em-weight
+    title: Weight
+    title.zh: 粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 400
+    min: 100
+    max: 900
+    step: 100
+  -
+    id: font-em-size
+    title: Size(em)
+    title.zh: 大小（em）
+    description: Base on the font size inherited from its parent.
+    description.zh: 基于从父级继承的字体大小。
+    type: variable-number-slider
+    min: 0.5
+    max: 2
+    step: 0.1
+    format: em
+    default: 1
+  -
+    id: custom-highlight-style
+    title: Highlight Style
+    title.zh: 高亮样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-highlight-color
+    title: Color
+    title.zh: 颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsl(0, 0%, 100%)
+    default-dark: hsl(0, 0%, 6.67%)
+  -
+    id: font-highlight-weight
+    title: Weight
+    title.zh: 粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 400
+    min: 100
+    max: 900
+    step: 100
+  -
+    id: font-highlight-size
+    title: Size(em)
+    title.zh: 大小（em）
+    description: Base on the font size inherited from its parent.
+    description.zh: 基于从父级继承的字体大小。
+    type: variable-number-slider
+    min: 0.5
+    max: 2
+    step: 0.1
+    format: em
+    default: 1
+  -
+    id: font-highlight-bg-color
+    title: Background
+    title.zh: 背景色
+    description: Default values displayed are incorrect. Default values are accent color.
+    description.zh: 下面显示的默认值是错的，它的默认值是强调色。
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsla(0, 0%, 0%, 0)
+    default-dark: hsla(0, 0%, 0%, 0)
+  -
+    id: font-highlight-decoration-line
+    title: Decoration
+    title.zh: 装饰位置
+    type: variable-select
+    default: none
+    allowEmpty: false
+    options:
+    -
+      label: underline
+      value: underline
+    -
+      label: overline
+      value: overline
+    -
+      label: line-through
+      value: line-through
+    -
+      label: none
+      value: none
+  -
+    id: font-highlight-decoration-style
+    title: Decoration Style
+    title.zh: 装饰样式
+    type: variable-select
+    default: solid
+    allowEmpty: false
+    options:
+    -
+      label: solid
+      value: solid
+    -
+      label: double
+      value: double
+    -
+      label: dotted
+      value: dotted
+    -
+      label: dashed
+      value: dashed
+    -
+      label: wavy
+      value: wavy
+  -
+    id: font-highlight-decoration-color
+    title: Decoration Color
+    title.zh: 装饰颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsla(0, 0%, 33.3%, 1)
+    default-dark: hsla(0, 0%, 66.7%, 1)
+  -
+    id: font-highlight-decoration-width
+    title: Decoration Width(px)
+    title.zh: 装饰宽度（px）
+    type: variable-number-slider
+    min: 1
+    max: 5
+    step: 0.5
+    format: px
+    default: 2
+  -
+    id: font-highlight-decoration-offset
+    title: Underline Offset(px)
+    title.zh: 下划线偏移（px）
+    description: Only available for underline.
+    description.zh: 仅对下划线有效。
+    type: variable-number-slider
+    min: -5
+    max: 5
+    step: 0.5
+    format: px
+    default: 3
+  -
+    id: custom-underlined-style
+    title: Underlined Style
+    title.zh: 下划线样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-underlined-color
+    title: Color
+    title.zh: 颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsl(0, 0%, 33.3%)
+    default-dark: hsl(0, 0%, 66.7%)
+  -
+    id: font-underlined-weight
+    title: Weight
+    title.zh: 粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 400
+    min: 100
+    max: 900
+    step: 100
+  -
+    id: font-underlined-size
+    title: Size(em)
+    title.zh: 大小（em）
+    description: Base on the font size inherited from its parent.
+    description.zh: 基于从父级继承的字体大小。
+    type: variable-number-slider
+    min: 0.5
+    max: 2
+    step: 0.1
+    format: em
+    default: 1
+  -
+    id: font-underlined-decoration-style
+    title: Decoration Style
+    title.zh: 装饰样式
+    type: variable-select
+    default: solid
+    allowEmpty: false
+    options:
+    -
+      label: solid
+      value: solid
+    -
+      label: double
+      value: double
+    -
+      label: dotted
+      value: dotted
+    -
+      label: dashed
+      value: dashed
+    -
+      label: wavy
+      value: wavy
+  -
+    id: font-underlined-decoration-color
+    title: Decoration Color
+    title.zh: 装饰颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsla(0, 0%, 33.3%, 1)
+    default-dark: hsla(0, 0%, 66.7%, 1)
+  -
+    id: font-underlined-decoration-width
+    title: Decoration Width(px)
+    title.zh: 装饰宽度（px）
+    type: variable-number-slider
+    min: 1
+    max: 5
+    step: 0.5
+    format: px
+    default: 1
+  -
+    id: font-underlined-decoration-offset
+    title: Underline Offset(px)
+    title.zh: 下划线偏移（px）
+    type: variable-number-slider
+    min: -5
+    max: 5
+    step: 0.5
+    format: px
+    default: 2
+  -
+    id: custom-strikethrough-style
+    title: Strikethrough Style
+    title.zh: 删除线样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-strikethrough-color
+    title: Color
+    title.zh: 颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsl(0, 0%, 53%)
+    default-dark: hsl(0, 0%, 60%)
+  -
+    id: font-strikethrough-weight
+    title: Weight
+    title.zh: 粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 400
+    min: 100
+    max: 900
+    step: 100
+  -
+    id: font-strikethrough-size
+    title: Size(em)
+    title.zh: 大小（em）
+    description: Base on the font size inherited from its parent.
+    description.zh: 基于从父级继承的字体大小。
+    type: variable-number-slider
+    min: 0.5
+    max: 2
+    step: 0.1
+    format: em
+    default: 1
+  -
+    id: font-strikethrough-decoration-style
+    title: Decoration Style
+    title.zh: 装饰样式
+    type: variable-select
+    default: solid
+    allowEmpty: false
+    options:
+    -
+      label: solid
+      value: solid
+    -
+      label: double
+      value: double
+    -
+      label: dotted
+      value: dotted
+    -
+      label: dashed
+      value: dashed
+    -
+      label: wavy
+      value: wavy
+  -
+    id: font-strikethrough-decoration-color
+    title: Decoration Color
+    title.zh: 装饰颜色
+    type: variable-themed-color
+    format: hsl
+    opacity: true
+    default-light: hsla(0, 0%, 53%, 1)
+    default-dark: hsla(0, 0%, 60%, 1)
+  -
+    id: font-strikethrough-decoration-width
+    title: Decoration Width(px)
+    title.zh: 装饰宽度（px）
+    type: variable-number-slider
+    min: 1
+    max: 5
+    step: 0.5
+    format: px
+    default: 1
+  -
+
+*/
+/* @settings
+name: Inline Elements
+id: inline-elements
+settings:
+  -
+    id: header-style
+    title: Header Style
+    title.zh: 标题样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: header-level-indicator
+    title: Header Level Indicator
+    title.zh: 标题层级指示器
+    description: If turned on, the collapse indicator will not be displayed and clicking the level indicator will fold or unfold the contents of a header.
+    description.zh: 如果开启，折叠指示器将不会显示，点击标题层级指示器将展开或折叠标题下的内容。
+    type: class-toggle
+    default: true
+  -
+    id: header-hovering-underline
+    title: Header Hovering Underline
+    title.zh: 标题悬停下划线
+    type: class-toggle
+    default: true
+  -
+    id: colorful-headers
+    title: Headers Coloring
+    title.zh: 彩色标题
+    type: class-toggle
+    default: true
+  -
+    id: header-color-gradient
+    title: Gradient Header Colors
+    title.zh: 渐变标题颜色
+    type: class-toggle
+    default: true
+  -
+    id: tag-style
+    title: Tag Style
+    title.zh: 标签样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: custom-tag-color-fill
+    title: Color Fill
+    title.zh: 颜色填充
+    type: class-select
+    default: tag-outline
+    options:
+    -
+      label: outline
+      value: tag-outline
+    -
+      label: fill
+      value: tag-fill
+  -
+    id: tag-radius
+    title: Radius(em)
+    title.zh: 圆角（em）
+    type: variable-number-slider
+    min: 0
+    max: 1
+    step: 0.1
+    format: em
+    default: 1
+  -
+    id: checkbox-style
+    title: Checkbox Style
+    title.zh: 复选框样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: enable-alternative-checkboxes
+    title: Enable Alternative Checkboxes
+    title.zh: 启用替代样式复选框
+    description: Disable this if you are using your own implementation via a CSS Snippet.
+    description.zh: 如果你在自己的 CSS 片段中实现了复选框样式，请关闭这个选项。
+    default: true
+    type: class-toggle
+  -
+    id: circle-checkbox
+    title: Circle Checkbox
+    title.zh: 圆形复选框
+    type: class-toggle
+    default: true
+  -
+    id: callout-style
+    title: Callout Style
+    title.zh: 标注样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: callout-dogs-ear
+    title: Dog's Ear
+    title.zh: 折角
+    description: It's kind of useless but we keeped this feature in case you like it.
+    description.zh: 这个功能有点没用，但万一你喜欢呢？
+    type: class-toggle
+    default: false
+  -
+    id: callout-dogs-ear-size
+    title: Dog's Ear Size(em)
+    title.zh: 折角大小（em）
+    type: variable-number-slider
+    min: 20
+    max: 60
+    step: 1
+    format: px
+    default: 30
+  -
+    id: embed-style
+    title: Embed Style
+    title.zh: 嵌入样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: embed-alt
+    title: Embed Alt
+    title.zh: 嵌入图片别名
+    type: class-toggle
+    default: true
+  -
+    id: embed-alt-position
+    title: Embed Alt Position
+    title.zh: 别名位置
+    type: class-select
+    default: embed-alt-right
+    options:
+    -
+      label: left
+      value: embed-alt-left
+    -
+      label: middle
+      value: embed-alt-middle
+    -
+      label: right
+      value: embed-alt-right
+  -
+*/
+
+/* @settings
+name: File Tree Style
+id: file-tree-style
+settings:
+  -
+    id: static-style
+    title: Static Style
+    title.zh: 静态样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: file-tree-icons
+    title: File Tree Icons
+    title.zh: 文件树图标
+    type: class-toggle
+    default: true
+  -
+    id: color-expanded-folder-indicator
+    title: Expanded Folder Indicator Coloring
+    title.zh: 展开文件夹指示器颜色
+    type: class-toggle
+    default: true
+  -
+    id: active-file-border
+    title: Active File Border
+    title.zh: 活动文件边框
+    type: class-toggle
+    default: true
+  -
+    id: Dynamic Style
+    title: Dynamic Style
+    title.zh: 动态样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: indicate-child
+    title: Indicate Child When Hovering
+    title.zh: 悬停时指示子文件
+    type: class-toggle
+    default: true
+  -
+    id: indicate-ascendant
+    title: Indicate Ascendant When Hovering
+    title.zh: 悬停时指示父文件
+    type: class-toggle
+    default: true
+  -
+    id: opaque-expanded-folder
+    title: Opaque Expanded Folder
+    title.zh: 不透明展开文件夹
+    description: If turned on, the expanded folder will be less transparent.
+    description.zh: 如果开启，展开的文件夹将会更不透明。
+    type: class-toggle
+    default: true
+  -
+*/
+/*
+@settings
+name: Focus Mode
+id: focus-mode
+settings:
+  -
+    id: fade-out-inactive-lines
+    title: Fade Out Inactive Lines
+    title.zh: 淡化非活动行
+    type: class-toggle
+    default: true
+  -
+    id: inactive-opacity
+    title: Inactive Opacity
+    title.zh: 淡化透明度
+    type: variable-number-slider
+    min: 0
+    max: 1
+    step: 0.1
+    default: 0.3
+  -
+    id: inactive-hover-opacity
+    title: Inactive Hover Opacity
+    title.zh: 悬停时透明度
+    type: variable-number-slider
+    min: 0
+    max: 1
+    step: 0.1
+    default: 0.8
+  -
+    id: focuse-transition-duration
+    title: Transition Duration(s)
+    title.zh: 过渡时长（秒）
+    type: variable-number-slider
+    format: s
+    min: 0
+    max: 1
+    step: 0.1
+    default: 0.2
+  -
+    id: zen-mode
+    title: Zen Mode
+    title.zh: Zen 模式
+    description: Hide all UI elements except the editor.
+    description.zh: 隐藏除编辑器外的所有界面元素。
+    type: class-toggle
+    default: false
+*/
+/*# sourceMappingURL=theme.css.map */
