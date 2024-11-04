@@ -1,4 +1,4 @@
-*.scss
 .DS_Store
 .obsidian/*
 examples/*
+*.css.map

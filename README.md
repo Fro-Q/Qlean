@@ -7,6 +7,8 @@ No Intro.
 
 For full changelog, please visit <https://github.com/Fro-Q/Qlean/blob/main/changelog/changelog.md>.
 
+If you are making a PR, please modify the `theme.scss` file and generate the `style.css` based on it. Please DO NOT modify the `style.css` directly because it may cause troubles for updating the theme.
+
 ## Features
 
 > [!hint]
