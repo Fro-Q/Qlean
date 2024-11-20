@@ -1,110 +1,167 @@
+## Version 2.0.0(11/06/2024)
+
+It's a big update! Better explore it by yourself!
+
+### Added
+
+1. Option `Header Hovering Underline`: offers a new "grow" style and the old "fade" style.
+2. Extensive support for checkboxes (`- [ ]`), where all lowercase letters, uppercase letters, and some special characters filled in `[]` will render a different SVG icon.
+3. Option `Uppercase Set for Checkboxes`: offers two sets of uppercase letters, one is simply the upper letter itself, and the other is social media set.
+4. Option `Callouts Border` and `Colorful Callouts Title` in "Callout" section.
+5. Section "UI Style":
+   1. Option `Toggles Style`: offers a brand new style for toggles.
+   2. Option `Glassmorphism Command Palette`: applies the glassmorphism effect to the modals and popups.
+6. Same effect as file-tree's ancestors and descendants indicators in outline.
+7. Section "Tables":
+   1. Option `Always Center Header Rows`: if enabled, the header row will always be aligned in the center.
+   2. Option `Full Width Tables`: if enabled, the table's width will be 100% of the container instead of fitting the content.
+   3. Option `Top & Bottom Borders for Table`.
+8. Visibility of drag handles when hovering on the cell.
+9. More...
+
+### Changed
+
+1. Default value of `Tags Border Radius (em)`: `1.0`.
+2. Callouts background color: less transparent to avoid weird background color in nested calllouts'.
+3. Default value of `Decoration Style for Underlined`: `Wavy`.
+4. All file icons.
+5. All border radius: more consistent.
+6. Tabs' style.
+7. All buttons' and inputs' style.
+8. Line height and line spacing in preview mode and editing mode: unified as much as possible to avoid flickering when switching between modes.
+9. Header hovering underlines' position: adjust to avoid overlapping with the text.
+10. Default value of `Decoration Width for Strikethrough`: `2.0`.
+11. More...
+
+### Removed
+
+1. Option `Use Built-in Color Picker`.
+2. Strikethrough decorations of the checked task(`- [x]`).
+3. More...
+
+### Fixed
+
+1. Headers displayed in one line, which produces a horizontal scrollbar.
+2. Wrapped code in code block. (I really thought it was a bug)
+3. Incorrectly file tree style when it is not the left split.
+4. Incorrectly file icons on platforms other than macOS.
+5. More...
+
 ## Version 1.0.2(11/04/2024)
 
-### new & change
+### Added
 
-1. Added new option "Enable Alternative Checkboxes" in "Checkbox" section to toggle the checkbox style offered by this theme. If you have your own checkbox style implemented by CSS snippet, disable this option in order to avoid conflicts.
+1. Option `Enable Alternative Checkboxes`: to toggle the checkbox style offered by this theme. If you have your own checkbox style implemented by CSS snippet, disable this option in order to avoid conflicts.
 
 > Thank to [@damiankorcz](https://github.com/damiankorcz) for the implementation. Read more about this initiative in this repo: [Alternative-Checkboxes-Reference-Set](https://github.com/damiankorcz/Alternative-Checkboxes-Reference-Set).
 
 ## Version 1.0.1(02/22/2024)
 
-### bug fix
+### Fixed
 
-1. Fixed the bug that the mermaid graph is not fully displayed.
+1. Not fully displayed Mermaid graph.
 
 ## Version 1.0.0(02/10/2024)
 
-### new & change
+### Added
 
-1. Smoothing header hovering.
+1. Option `Header Level Indicator`: if enabled, headers' level indicator will take the collapse indicator's job. You can collapse headers by clicking on the level indicator, and it will give you a clear visual feedback.
+2. `line-through` style for checked tasks(`- [x]`).
+3. Codeblock language indicator that supports all languages listed in [prismjs](https://prismjs.com/#supported-languages).
+4. Option `Use Built-in Color Picker`.
+
+### Removed
+
+1. Decoration options for strong, em, and underline.
+2. "Red Close Button" and "Close Button Rotate Animation" option.
+3. `box-shadow` and `text-shadow` in tags.
+4. Underline of file name in editor mode.
+
+### Changed
+
+1. Smoother header hovering effect.
 2. Darker background color in Dark mode.
-3. Paler text color in Dark mode.
-4. Paragraphs' `line-height` is set to `1.75`.
-5. If "Header Level Indicator" is enabled, headers' level indicator now takes the collapse indicator's job. You can now collapse headers by clicking on the level indicator, And it will give you a clear visual feedback.
-6. Removed decoration options for strong, em, and underline.
-7. Checked task(`- [x]`) now has a `line-through` style just like the default theme.
-8. Changed the default highlight style. Feel free to change it back if you like the older one.
-9. Callouts' dog-ear is disabled by default.
-10. Darker code block background color in Dark mode.
-11. Added codeblock language indicator that supports all languages listed in [prismjs](https://prismjs.com/#supported-languages).
-12. Better "Copy" button style in codeblock.
-13. Smaller #tag.
-14. Removed "Red Close Button" and "Close Button Rotate Animation" option.
-15. Active sideber icon are highlighted by `stroke` instead of `fill`.
-16. Changed side dock icon hovering style.
-17. Brighter text color in tags.
-18. Removed `box-shadow` and `text-shadow` in tags.
-19. Removed underline of file name in editor.
-20. Changed all buttons' style.
-21. Redeisgned table.
-22. Offers the option to use built-in color picker.
-23. ...
+3. Darker code block background color in Dark mode.
+4. Paler text color in Dark mode.
+5. Paragraphs' `line-height`: `1.75`.
+6. Default highlight style.
+7. Option `Callouts' dog-ear`: disabled by default.
+8. Better "Copy" button style in codeblock.
+9. Smaller `#tag`.
+10. Active sideber icon highlighted: `stroke` instead of `fill`.
+11. Side dock icon hovering style.
+12. Brighter text color in tags.
+13. All buttons' style.
+14. Tables style.
+15. Header hovering underlines: a continuous line.
 
-### bug fix
+### Fixed
 
-1. Alt text of images now correctly displayed.
-2. Inlince code doesn't have a "wings" anymore.
-3. Header hovering underline is now a continuous line.
-4. Fix the bug in ZEN mode that the topbar is hard to reach.
+1. Incorrectly displayed alt text of images.
+2. "Wings" of inline codes.
+3. Unaccessible topbar in Zen mode.
 
 ## Version 0.1.6(12/22/2023)
 
-### new & change
+### Changed
 
-1. Ative tab color in dark mode is no longer dazzling.
-2. Side dock color now is the same as main content area color.
+1. Active tab color in dark mode: smoother.
+2. Side dock color: the same as main content area color.
 
-### bug fix
+### Fixed
 
-1. Side dock correctly hide in Zen mode.
-2. "tags" in "property" work the same as inline `#tag`(apologize for bringing this bug back after fixing it in 0.1.3).
+1. Unhiden side dock in Zen mode.
+2. Unworking style of #tags in "property".
 
 ## Version 0.1.5(10/20/2023)
 
-### new & change
+### Added
 
-1. All embeds have their alts displayed and position options are available.
+1. Option `Embed Alt Position` for embeds' alts.
 
-### bug fix
+### Fixed
 
-1. Icons of some other types of files are now correctly displayed.
-2. Fixed the bug in 0.1.4 that the Hue Slider preview is not displayed.
+1. Incorrectly displayed file icons of some other types of files.
+2. Unworking Hue Slider preview.
 
 ## Version 0.1.4(10/19/2023)
 
-### new & change
+### Changed
 
-1. Border instead of background to indicate the active file in file tree.
-2. Changed default font value.
+1. Indication of the active file in file tree: border instead of background.
+2. Default font family.
 
-### bug fix
+### Fixed
 
-1. Deeply apologise for the unworking font & accent color change button. Now custom accent color and custom font both work fine.
+1. Unworking font & accent color change button, with deep regret.
 
 ## Version 0.1.3(09/14/2023)
 
-### new & change
+### Changed
 
-1. Tags in "Property" looks the same as that out of “Property".
+1. #tags in "Property": the same as that out of “Property".
 
-### bug fix
+### Fixed
 
-1. Mermaid graphs are now correctly displayed.
+1. Incorrectly displayed Mermaid graphs.
 
 ## Version 0.1.2(09/07/2023)
 
-### new & change
+### Added
 
-1. Pictures now have their alts displayed. Position options will be released soon.
-2. Removed sidebar and topbar borders in Zen.
+1. Option `Embed Alt`, with soon-comming position option.
+
+### Removed
+
+1. Borders of sidebar and topbar in Zen mode.
 
 ## Version 0.1.1(09/06/2023)
 
-### new & change
+### Changed
 
-1. Background color of active file in file tree is no longer dark(changed to accent color).
-2. Selected text color now works as accent color.
+1. Background color of active file in file tree: change to accent color.
+2. Selected text color: now works as accent color.
 
-### bug fix
+### Fixed
 
-1. Left-top corner color correctly works in Zen mode.
+1. Incorrectly displayed left-top corner color.
