@@ -1399,7 +1399,7 @@ body.header-level-indicator {
     var(--font-text),
     var(--font-highlight-size),
     var(--font-highlight-weight),
-    var(--font-highlight-color) !important
+    var(--font-highlight-color)
   );
   text-decoration: var(--font-highlight-decoration-line) var(--font-highlight-decoration-style)
     var(--font-highlight-decoration-color) var(--font-highlight-decoration-width);
@@ -1409,6 +1409,25 @@ body.header-level-indicator {
   padding: 0.125em 0.25em;
   border-radius: 0.125em;
   margin: 0.125em;
+}
+
+// NOTE: body class for Style Settings
+body.font-highlight-cover-mode {
+  & .markdown-rendered mark,
+  & .markdown-source-view.is-live-preview mark,
+  .markdown-source-view.is-live-preview :not(.cm-formatting-highlight) + .cm-highlight {
+    transition: color 0.2s;
+    color: var(--font-highlight-bg-color);
+
+    &:hover {
+      color: var(--font-highlight-color);
+    }
+  }
+
+  & .markdown-source-view.is-live-preview .cm-highlight.cm-formatting-highlight,
+  & .markdown-source-view.is-live-preview .cm-active.cm-line .cm-highlight {
+    color: var(--font-highlight-color);
+  }
 }
 
 // strikethrough el
@@ -4561,6 +4580,12 @@ settings:
     type: heading
     level: 1
     collapsed: true
+  -
+    id: font-highlight-cover-mode
+    title: Cover Mode for Highlight
+    title.zh: 高亮覆盖模式
+    type: class-toggle
+    default: false
   -
     id: font-highlight-color
     title: Color for Highlight

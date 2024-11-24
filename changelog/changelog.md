@@ -1,3 +1,9 @@
+## Version 2.0.1(11/25/2024)
+
+### Added
+
+1. Option `Cover Mode for Highlight`: if enabled, text in highlight will only be displayed when hovering on it, which is useful for hiding spoilers.
+
 ## Version 2.0.0(11/06/2024)
 
 It's a big update! Better explore it by yourself!
