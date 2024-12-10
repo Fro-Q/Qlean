@@ -1,3 +1,13 @@
+## Version 2.0.2(12/10/2024)
+
+### Added
+
+1. Option `Always Show Full Header in Outline`: if enabled, the full header will always be displayed in the outline, which is useful for long headers.
+
+### Changed
+
+1. Tree items' height: `1.5em` -> `1.2em`.
+
 ## Version 2.0.1(11/25/2024)
 
 ### Added

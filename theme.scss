@@ -3530,7 +3530,16 @@ body.tag-outline {
 
   & .tree-item-inner {
     padding-left: 0.3em;
-    height: 1.5em;
+  }
+
+  body:not(.always-show-full-header-in-outline) & .tree-item-inner {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body.always-show-full-header-in-outline & .tree-item-inner {
+    min-height: 1.2em;
   }
 }
 
@@ -5089,8 +5098,8 @@ settings:
 */
 
 /* @settings
-name: File Tree
-id: file-tree
+name: Tree
+id: tree
 settings:
   -
     id: static-style
@@ -5117,6 +5126,12 @@ settings:
     title.zh: 当前文件边框
     type: class-toggle
     default: true
+  -
+    id: always-show-full-header-in-outline
+    title: Always Show Full Header in Outline
+    title.zh: 大纲中始终显示完整标题
+    type: class-toggle
+    default: false
   -
     id: Dynamic Style
     title: Dynamic Style
