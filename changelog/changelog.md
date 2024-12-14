@@ -1,3 +1,9 @@
+## Version 2.0.3(12/15/2024)
+
+### Added
+
+1. Option `Common Font Weight` to set the font weight of all text elements.
+
 ## Version 2.0.2(12/10/2024)
 
 ### Added

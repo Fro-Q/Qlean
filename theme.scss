@@ -4429,13 +4429,24 @@ settings:
     collapsed: true
   -
     id: font-text
-    title: Text Font
+    title: Text Font Family
     title.zh: 文本字体
     description: This will be the default font for most of the text in editor except for math and code.
     description.zh: 将会影响编辑器中除了数学公式和代码外的几乎所有文字。
     type: variable-text
     default: '"Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif'
     allowEmpty: true
+  -
+    id: font-text-weight
+    title: Common Font Weight
+    title.zh: 通用字体粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 400
+    min: 100
+    max: 900
+    step: 100
   -
     id: font-header
     title: Header Font
