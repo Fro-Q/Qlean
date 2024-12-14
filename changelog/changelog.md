@@ -1,3 +1,13 @@
+## Version 2.0.4(12/15/2024)
+
+### Changed
+
+1. Default value of font weight: `100` -> `400`.
+
+### Fixed
+
+1. Bug in the latest version.
+
 ## Version 2.0.3(12/15/2024)
 
 ### Added

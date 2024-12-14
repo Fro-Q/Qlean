@@ -20,7 +20,7 @@ body:is(.theme-light, .theme-dark) {
   --font-file-tree-size: 0.95em;
   --font-vault-name-size: 1.25em;
   --font-source-view-size: 1em;
-  --font-text-weight: 100;
+  --font-text-weight: 400;
   --font-tag-weight: 400;
   --font-latex-weight: 400;
   --font-monospace-weight: 400;
@@ -4734,17 +4734,6 @@ settings:
     default: '"Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif'
     allowEmpty: true
   -
-    id: font-text-weight
-    title: Common Font Weight
-    title.zh: 通用字体粗细
-    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
-    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
-    type: variable-number-slider
-    default: 400
-    min: 100
-    max: 900
-    step: 100
-  -
     id: font-header
     title: Header Font
     title.zh: 标题字体
@@ -4796,6 +4785,24 @@ settings:
     type: variable-text
     default: ''
     allowEmpty: true
+  -
+    id: font-common-style
+    title: Common Style
+    title.zh: 通用样式
+    type: heading
+    level: 1
+    collapsed: true
+  -
+    id: font-text-weight
+    title: Common Font Weight
+    title.zh: 通用字体粗细
+    description: Uasually makes difference at 100, 400, 700, 900 though depends on the font.
+    description.zh: 通常在 100、400、700、900 时会有明显区别，但取决于字体。
+    type: variable-number-slider
+    default: 400
+    min: 100
+    max: 900
+    step: 100
   -
     id: strong-style
     title: Strong Style
