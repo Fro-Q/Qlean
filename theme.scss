@@ -2960,7 +2960,8 @@ body.enable-alternative-checkboxes {
       border-bottom: 1.5px solid var(--text-normal);
     }
 
-    & * {
+    & td,
+    & th {
       border-color: var(--text-muted);
       // border-left: none;
       // border-right: none;

@@ -3557,9 +3557,11 @@ body.top-bottom-table-border .style-settings-container div:has(> table) table {
   border-top: 1.5px solid var(--text-normal);
   border-bottom: 1.5px solid var(--text-normal);
 }
-.markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table *,
-.markdown-rendered div:has(> table) table *,
-.style-settings-container div:has(> table) table * {
+.markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table td, .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table th,
+.markdown-rendered div:has(> table) table td,
+.style-settings-container div:has(> table) table td,
+.markdown-rendered div:has(> table) table th,
+.style-settings-container div:has(> table) table th {
   border-color: var(--text-muted);
   border-left-color: transparent;
   border-right-color: transparent;

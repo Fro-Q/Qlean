@@ -1,3 +1,9 @@
+## Version 2.0.5(12/15/2024)
+
+### Fixed
+
+1. Bug that math in tables is not displayed correctly.
+
 ## Version 2.0.4(12/15/2024)
 
 ### Changed
