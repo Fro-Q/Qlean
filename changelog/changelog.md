@@ -1,3 +1,14 @@
+## Version 2.0.6(12/28/2024)
+
+### Changed
+
+1. Color of url in source code mode: muted -> same as link color.
+
+### Fixed
+
+1. Bug that the top border of the table is not displayed.
+
+
 ## Version 2.0.5(12/15/2024)
 
 ### Fixed

@@ -2956,8 +2956,8 @@ body.enable-alternative-checkboxes {
 
     // NOTE: body class for Style Settings
     body.top-bottom-table-border & {
-      border-top: 1.5px solid var(--text-normal);
-      border-bottom: 1.5px solid var(--text-normal);
+      border-top: 2px solid var(--text-normal);
+      border-bottom: 1px solid var(--text-normal);
     }
 
     & td,
@@ -3320,11 +3320,11 @@ body.tag-outline {
 }
 
 // links in editing view
-.markdown-source-view.is-live-preview :is(.cm-link, .cm-hmd-internal-link),
+.markdown-source-view.is-live-preview :is(.cm-link, .cm-url, .cm-hmd-internal-link),
 .markdown-rendered a:not(.tag) {
   text-underline-offset: var(--link-decoration-offset);
 
-  &:hover {
+  & a.cm-underline:hover {
     color: var(--link-color);
   }
 }
@@ -3339,10 +3339,8 @@ body.tag-outline {
 
 .markdown-source-view.is-live-preview .is-unresolved,
 .markdown-rendered a.internal-link.is-unresolved {
-  &:hover {
-    & a {
-      color: var(--link-color);
-    }
+  & a.cm-underline:hover {
+    color: var(--link-color);
   }
 }
 
@@ -3989,7 +3987,11 @@ body.fade-out-inactive-lines {
     }
   }
 
-  & :is(.cm-url) {
+  & span.cm-url {
+    color: var(--color-link);
+  }
+
+  & :is(.cm-string.cm-url) {
     color: var(--text-muted);
     text-decoration: underline solid 1px var(--text-muted);
     text-underline-offset: 4px;
@@ -4009,11 +4011,7 @@ body.fade-out-inactive-lines {
   }
 
   & span.cm-formatting-link.cm-url {
-    color: var(--text-muted);
-
-    &:hover {
-      color: var(--color-link);
-    }
+    color: var(--color-link);
   }
 
   & .cm-highlight {

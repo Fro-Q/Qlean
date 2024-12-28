@@ -3554,8 +3554,8 @@ body.full-width-table .style-settings-container div:has(> table) > table {
 body.top-bottom-table-border .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table,
 body.top-bottom-table-border .markdown-rendered div:has(> table) table,
 body.top-bottom-table-border .style-settings-container div:has(> table) table {
-  border-top: 1.5px solid var(--text-normal);
-  border-bottom: 1.5px solid var(--text-normal);
+  border-top: 2px solid var(--text-normal);
+  border-bottom: 1px solid var(--text-normal);
 }
 .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table td, .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table th,
 .markdown-rendered div:has(> table) table td,
@@ -3828,14 +3828,14 @@ body.tag-outline .markdown-source-view.is-live-preview .cm-line .cm-hashtag:is(.
   box-shadow: none;
 }
 
-.markdown-source-view.is-live-preview :is(.cm-link, .cm-hmd-internal-link),
+.markdown-source-view.is-live-preview :is(.cm-link, .cm-url, .cm-hmd-internal-link),
 .markdown-rendered a:not(.tag),
 .style-settings-container a:not(.tag) {
   text-underline-offset: var(--link-decoration-offset);
 }
-.markdown-source-view.is-live-preview :is(.cm-link, .cm-hmd-internal-link):hover,
-.markdown-rendered a:not(.tag):hover,
-.style-settings-container a:not(.tag):hover {
+.markdown-source-view.is-live-preview :is(.cm-link, .cm-url, .cm-hmd-internal-link) a.cm-underline:hover,
+.markdown-rendered a:not(.tag) a.cm-underline:hover,
+.style-settings-container a:not(.tag) a.cm-underline:hover {
   color: var(--link-color);
 }
 
@@ -3846,9 +3846,9 @@ body.tag-outline .markdown-source-view.is-live-preview .cm-line .cm-hashtag:is(.
   text-decoration: none;
 }
 
-.markdown-source-view.is-live-preview .is-unresolved:hover a,
-.markdown-rendered a.internal-link.is-unresolved:hover a,
-.style-settings-container a.internal-link.is-unresolved:hover a {
+.markdown-source-view.is-live-preview .is-unresolved a.cm-underline:hover,
+.markdown-rendered a.internal-link.is-unresolved a.cm-underline:hover,
+.style-settings-container a.internal-link.is-unresolved a.cm-underline:hover {
   color: var(--link-color);
 }
 
@@ -4369,13 +4369,16 @@ body.fade-out-inactive-lines .cm-line.cm-active {
   text-decoration: none;
   color: var(--color-link);
 }
-.markdown-source-view:not(.is-live-preview) :is(.cm-url) {
+.markdown-source-view:not(.is-live-preview) span.cm-url {
+  color: var(--color-link);
+}
+.markdown-source-view:not(.is-live-preview) :is(.cm-string.cm-url) {
   color: var(--text-muted);
   -webkit-text-decoration: underline solid 1px var(--text-muted);
           text-decoration: underline solid 1px var(--text-muted);
   text-underline-offset: 4px;
 }
-.markdown-source-view:not(.is-live-preview) :is(.cm-url):hover {
+.markdown-source-view:not(.is-live-preview) :is(.cm-string.cm-url):hover {
   color: var(--color-link);
   text-decoration-color: var(--color-link);
 }
@@ -4386,9 +4389,6 @@ body.fade-out-inactive-lines .cm-line.cm-active {
   color: var(--color-text);
 }
 .markdown-source-view:not(.is-live-preview) span.cm-formatting-link.cm-url {
-  color: var(--text-muted);
-}
-.markdown-source-view:not(.is-live-preview) span.cm-formatting-link.cm-url:hover {
   color: var(--color-link);
 }
 .markdown-source-view:not(.is-live-preview) .cm-highlight {
