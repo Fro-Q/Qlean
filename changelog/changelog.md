@@ -1,3 +1,9 @@
+## Version 2.0.7(01/08/2025)
+
+### Fixed
+
+1. Bug that when [Supercharged Links](obsidian://show-plugin?id=supercharged-links-obsidian) is installed, the link color is not overridden.
+
 ## Version 2.0.6(12/28/2024)
 
 ### Changed
