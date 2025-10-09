@@ -1,3 +1,22 @@
+## Version 2.1.0(10/09/2025)
+
+### Fixed
+
+1. Bug that option `UI Font` does not apply to some text in settings.
+2. Bug that the padding of the code block is kind of so weird.
+3. Font family of `#tags` now uses value of option `Monospace Font`.
+
+### Changed
+
+1. Smaller callout padding and margin to avoid too much space.
+2. Smaller border radius of code block to be consistent with other elements.
+
+### Added
+
+1. Add `200px` left margin to status bar to avoid overlapping with left sidebar. 
+2. Style for "Bases".
+3. Style for Stack views. (To be honest, I just notice that Obsidian has this one...)
+
 ## Version 2.0.7(01/08/2025)
 
 ### Fixed
@@ -194,7 +213,7 @@ It's a big update! Better explore it by yourself!
 
 ### Changed
 
-1. #tags in "Property": the same as that out of “Property".
+1. `#tags` in "Property": the same as that out of "Property".
 
 ### Fixed
 
