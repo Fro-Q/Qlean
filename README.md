@@ -107,7 +107,7 @@ Also, you can visit my [blog](https://fro-blo.com/) to see more about me. (Curre
 
 Your sponsorship can help me sustain my projects more actively. Consider Sponsoring me on [爱发电](https://afdian.net/a/fro-q) or Alipay.
 
-![Alipay QR code](alipay_qrcode.png)
+![Alipay QR code](assets/alipay_qrcode.png)
 
 ## License
 
