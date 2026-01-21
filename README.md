@@ -103,11 +103,9 @@ Email: froqqq@outlook.com
 GitHub: [@Fro-Q](https://github.com/Fro-Q)
 
 https://example.com
-Also, you can visit my [blog](https://fro-blo.com/) to see more about me. (Currently, blogs are written in only Chinese.)
+Also, you can visit my [blog](https://froq.me/) to see more about me. (Currently, blogs are written in only Chinese.)
 
-Your sponsorship can help me sustain my projects more actively. Consider Sponsoring me on [爱发电](https://afdian.net/a/fro-q) or Alipay.
-
-![Alipay QR code](assets/alipay_qrcode.png)
+Your sponsorship can help me sustain my projects more actively. Consider Sponsoring me on [爱发电](https://afdian.com/a/froq-sponsor-me).
 
 ## License
 
